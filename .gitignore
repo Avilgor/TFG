@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+PrototipoAR/Library/ArtifactDB
+PrototipoAR/Library
+PrototipoAR/Temp
