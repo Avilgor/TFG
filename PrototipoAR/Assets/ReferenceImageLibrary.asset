@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4890832761636841707
+  m_GuidHigh: 15715781784318962846
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5226440946120656181
+      m_GuidHigh: 5277876907385085318
+    m_SerializedTextureGuid:
+      m_GuidLow: 8346530813301975621
+      m_GuidHigh: 248980465730380107
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_1
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5499674346636160058
+      m_GuidHigh: 10129969239314839728
+    m_SerializedTextureGuid:
+      m_GuidLow: 1757584579816537778
+      m_GuidHigh: 7818353059272467336
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_2
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5575166535439290227
+      m_GuidHigh: 15819394959105555646
+    m_SerializedTextureGuid:
+      m_GuidLow: 9395768054462085901
+      m_GuidHigh: 10757651713703691577
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_3
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5405581822507157090
+      m_GuidHigh: 16699756525171220616
+    m_SerializedTextureGuid:
+      m_GuidLow: 3095323293201337791
+      m_GuidHigh: 13299763009757921593
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_4
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5148166030711369228
+      m_GuidHigh: 14920347845005598384
+    m_SerializedTextureGuid:
+      m_GuidLow: 429120477618463534
+      m_GuidHigh: 12291949109590161018
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_5
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5266446093229908092
+      m_GuidHigh: 10326243597020399796
+    m_SerializedTextureGuid:
+      m_GuidLow: 3135865807853217394
+      m_GuidHigh: 17839613443261345225
+    m_Size: {x: 0.06, y: 0.06}
+    m_SpecifySize: 1
+    m_Name: Mark_Cube_6
+    m_Texture: {fileID: 0}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 463f1344101be3c47b54b6c269cfb1a2
+guid: c9901b6725df23d4186f97077428adee
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - KenVector Future
+  - Bunny Funny
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

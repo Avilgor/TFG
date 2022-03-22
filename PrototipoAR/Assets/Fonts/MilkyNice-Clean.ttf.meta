@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b58e686e6a1ee5d4e9279ecc98a390bf
+guid: ecfca53353aef0848a194a08f3bc83aa
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,8 +9,9 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - KenVector Future Thin
-  fallbackFontReferences: []
+  - Milky Nice
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2a76cf9187dc25d4e87ee89d75bf064e, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
