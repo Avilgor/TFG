@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Marker
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Marker
   - Water
   - UI
   - 

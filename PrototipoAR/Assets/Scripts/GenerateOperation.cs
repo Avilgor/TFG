@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public enum OperatorType
 {
@@ -19,24 +18,16 @@ public enum Difficulty
     DFF_HARD //All 2 digits up to 99
 }
 
-public class GenerateOperation : MonoBehaviour
-{
-    [SerializeField]
-    TextMeshProUGUI text;
+public class GenerateOperation
+{      
+    public int currentSolution;
+    public string currentOperation;
 
-    List<string> testList = new List<string>();
-    int currentSolution;
-    string currentOperation;
-
-    void Start()
+    public GenerateOperation()
     {
-        testList.Add("+");
-        testList.Add("*");
-        testList.Add("-");
-        testList.Add("-");
-        Generate(testList,Difficulty.DFF_EASY);
+        currentOperation = "";
+        currentSolution = 0;
     }
-
 
     public void Generate(List<string> list, Difficulty diff)
     {
@@ -110,7 +101,6 @@ public class GenerateOperation : MonoBehaviour
                 break;
         }
         currentOperation = txt;
-        text.text = txt + "= ?";
         GenerateSolution(numbers,list);
     }
 

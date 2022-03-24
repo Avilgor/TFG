@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NumberMarker : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TextMeshProUGUI text;
+    
+    bool isSolution;
+    int number;
+
     void Start()
     {
-        
+        isSolution = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetNumber(int num,bool sol)
     {
-        
+        number = num;
+        text.text = num.ToString();
+        isSolution = sol;
+        gameObject.SendMessage("SetSelectable", true);
+    }
+
+    public void OnExecute()
+    {
+        if (isSolution)
+        {
+            Debug.Log("Correct number");
+        }
+        else
+        {
+            Debug.Log("Incorrect number");
+            gameObject.SendMessage("SetSelectable",false);
+            text.enabled = false;
+        }
     }
 }
