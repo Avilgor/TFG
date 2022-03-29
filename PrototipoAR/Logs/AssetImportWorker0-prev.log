@@ -15,7 +15,7 @@ D:/GitHub Proyects/TFG/PrototipoAR
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57619
+57673
 Successfully changed project path to: D:/GitHub Proyects/TFG/PrototipoAR
 D:/GitHub Proyects/TFG/PrototipoAR
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ D:/GitHub Proyects/TFG/PrototipoAR
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 100.87 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 238.15 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.11f1 (e50cafbb4399)
 [Subsystems] Discovering subsystems at path G:/Programas/Unity/2021.2.11f1/Editor/Data/Resources/UnitySubsystems
@@ -58,172 +58,47 @@ Direct3D:
     Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
     Vendor:   NVIDIA
     VRAM:     8088 MB
-    Driver:   30.0.15.1179
+    Driver:   30.0.15.1215
 Initialize mono
 Mono path[0] = 'G:/Programas/Unity/2021.2.11f1/Editor/Data/Managed'
 Mono path[1] = 'G:/Programas/Unity/2021.2.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'G:/Programas/Unity/2021.2.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56044
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56304
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: G:/Programas/Unity/2021.2.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002871 seconds.
+Registered in 0.004624 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 97.14 ms, found 9 plugins.
+Refreshing native plugins compatible for Editor in 104.41 ms, found 9 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.581 seconds
+- Completed reload, in  0.653 seconds
 Domain Reload Profiling:
-	ReloadAssembly (582ms)
-		BeginReloadAssembly (65ms)
+	ReloadAssembly (653ms)
+		BeginReloadAssembly (99ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (450ms)
-			LoadAssemblies (64ms)
+		EndReloadAssembly (480ms)
+			LoadAssemblies (98ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (106ms)
+			SetupTypeCache (101ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (23ms)
-			SetupLoadedEditorAssemblies (274ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (305ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (14ms)
+				InitializePlatformSupportModulesInManaged (13ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (97ms)
+				RefreshPlugins (105ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (123ms)
-				ProcessInitializeOnLoadMethodAttributes (38ms)
+				ProcessInitializeOnLoadAttributes (133ms)
+				ProcessInitializeOnLoadMethodAttributes (53ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006755 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\GitHub Proyects\TFG\PrototipoAR\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image D:\GitHub Proyects\TFG\PrototipoAR\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 112.32 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Package Manager log level set to [2]
-Mono: successfully reloaded assembly
-- Completed reload, in  1.204 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1206ms)
-		BeginReloadAssembly (105ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (1019ms)
-			LoadAssemblies (85ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (266ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (57ms)
-			SetupLoadedEditorAssemblies (575ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (112ms)
-				BeforeProcessingInitializeOnLoad (108ms)
-				ProcessInitializeOnLoadAttributes (318ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
-				AfterProcessingInitializeOnLoad (3ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 2.09 ms, found 9 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4433 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 50 unused Assets / (161.0 KB). Loaded Objects now: 4870.
-Memory consumption went from 152.6 MB to 152.4 MB.
-Total: 3.339300 ms (FindLiveObjects: 0.396700 ms CreateObjectMapping: 0.104000 ms MarkObjects: 2.722800 ms  DeleteObjects: 0.114400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 43422.643651 seconds.
-  path: Assets/ReferenceImageLibrary.asset
-  artifactKey: Guid(c86b3d98927c2464697cc7d1025873c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ReferenceImageLibrary.asset using Guid(c86b3d98927c2464697cc7d1025873c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e66583e3947b2ded6e38d8e94d610559') in 0.046923 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 111.430790 seconds.
-  path: Assets/Fonts/kenvector_future_thin SDF.asset
-  artifactKey: Guid(1d0e45608f3e2b241b1f91a9d605aa17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/kenvector_future_thin SDF.asset using Guid(1d0e45608f3e2b241b1f91a9d605aa17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
- -> (artifact id: '8802474639dcf0d45000a6206fa1da2c') in 0.146780 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.672879 seconds.
-  path: Assets/Fonts/kenvector_future SDF.asset
-  artifactKey: Guid(6244dddc60a9bfb4ca8e305c4b952dd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/kenvector_future SDF.asset using Guid(6244dddc60a9bfb4ca8e305c4b952dd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
- -> (artifact id: '17febd0132758daee45b2b2e39e804af') in 0.024800 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 67.447456 seconds.
-  path: Assets/Fonts/BunnyFunny.ttf
-  artifactKey: Guid(c9901b6725df23d4186f97077428adee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/BunnyFunny.ttf using Guid(c9901b6725df23d4186f97077428adee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7a18bca460826fed9279df778fa376b') in 0.027907 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Fonts/Starborn.ttf
-  artifactKey: Guid(8ae4d7c6e1b2a3341a46b44977e2a7d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Starborn.ttf using Guid(8ae4d7c6e1b2a3341a46b44977e2a7d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b10ab2e4e17ddf538a4f930cbe362ec') in 0.038422 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Fonts/Hoollidday.ttf
-  artifactKey: Guid(37361e963a54af14eaf67e6bc8129e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Hoollidday.ttf using Guid(37361e963a54af14eaf67e6bc8129e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '223c506ac911be2301479cd95056e415') in 0.013810 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Fonts/MilkyNice.ttf
-  artifactKey: Guid(2a76cf9187dc25d4e87ee89d75bf064e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/MilkyNice.ttf using Guid(2a76cf9187dc25d4e87ee89d75bf064e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '454106f616fe6d6239ce4f67f69595dd') in 0.014325 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.644550 seconds.
-  path: Assets/Fonts/Cotton Butter SDF.asset
-  artifactKey: Guid(08462ef807c676d4390b5347cb3218f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Cotton Butter SDF.asset using Guid(08462ef807c676d4390b5347cb3218f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
- -> (artifact id: 'b6fdc714e113ee91075e03813447496f') in 0.063913 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Fonts/Stop Bullying SDF.asset
-  artifactKey: Guid(da36ac95be1952943b5fd99bb301db53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Stop Bullying SDF.asset using Guid(da36ac95be1952943b5fd99bb301db53) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
- -> (artifact id: 'c678afb9e0dbc1ad3489b2449d7c2561') in 0.018538 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Fonts/Starborn SDF.asset
-  artifactKey: Guid(ee159a4e98bd684448bd1ebe2f08074f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Fonts/Starborn SDF.asset using Guid(ee159a4e98bd684448bd1ebe2f08074f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'TextMeshPro/Distance Field': fallback shader 'TextMeshPro/Mobile/Distance Field' not found
- -> (artifact id: 'bc2ca4ed1e3016d0983f0fb9cac5cbfd') in 0.023300 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+Registered in 0.008248 seconds.

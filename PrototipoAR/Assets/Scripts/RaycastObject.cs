@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface RaycastObject
 {
-    bool isHit { get; set; }
-    bool isSelectable { get; set; }
+    //bool isHit { get; set; }
+    //bool isSelectable { get; set; }
 
     public void SetSelectable(bool sel);
     public void OnHit();

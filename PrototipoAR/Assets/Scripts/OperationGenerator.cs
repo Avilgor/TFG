@@ -18,12 +18,12 @@ public enum Difficulty
     DFF_HARD //All 2 digits up to 99
 }
 
-public class GenerateOperation
+public class OperationGenerator
 {      
     public int currentSolution;
     public string currentOperation;
 
-    public GenerateOperation()
+    public OperationGenerator()
     {
         currentOperation = "";
         currentSolution = 0;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ARTrackable
 {
-    bool isDetected { get; set; }
+    //bool isDetected { get; set; }
 
     public void InSight();
     public void OutSight();

@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class SelectionFill : MonoBehaviour
 {
     public Image fillImg;
+    public int fillTime;
 
     bool fill;
     float timer;
     GameObject fillRequester;
+    float fillAmount;
 
     private void Awake()
     {
@@ -33,9 +35,9 @@ public class SelectionFill : MonoBehaviour
         if (fill)
         {
             timer += Time.deltaTime;
-            fillImg.fillAmount = timer;
+            fillImg.fillAmount = timer / fillTime;
 
-            if (timer >= 1)
+            if (timer >= fillTime)
             {
                 timer = 0;
                 fillImg.fillAmount = 1;
@@ -53,6 +55,7 @@ public class SelectionFill : MonoBehaviour
         fillImg.enabled = true;
         timer = 0;
         fillRequester = requester;
+        Debug.Log("Start selection fill");
     }
 
     public void StopFill()
@@ -60,5 +63,6 @@ public class SelectionFill : MonoBehaviour
         fill = false;
         fillImg.enabled = false;
         fillRequester = null;
+        Debug.Log("Stop selection fill");
     }
 }

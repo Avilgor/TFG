@@ -4,25 +4,9 @@ using UnityEngine;
 
 public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
 {
-    public bool isDetected 
-    { 
-        get =>  isDetected; 
-        set => isDetected = value;  
-    }
+    bool isSelectable,isHit,isDetected;
 
-    public bool isHit 
-    { 
-        get => isHit; 
-        set => isHit = value; 
-    }
-
-    public bool isSelectable 
-    { 
-        get => isSelectable; 
-        set => isSelectable = value;
-    }   
-
-    private void Awake()
+    void Awake()
     {
         isDetected = false;
         isSelectable = true;
@@ -33,12 +17,12 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
 
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         isDetected = true;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         isDetected = false;
     }
@@ -57,8 +41,7 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
     public void OnHit()
     {
         if (isSelectable)
-        {
-            Debug.Log("Gameobject " + name + " hit!");
+        {          
             isHit = true;
             GLOBALS.selectionFillUI.StartFill(gameObject);
         }
@@ -68,7 +51,6 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
     {
         if (isSelectable)
         {
-            Debug.Log("Gameobject " + name + " stop hit.");
             isHit = false;
             GLOBALS.selectionFillUI.StopFill();
         }
@@ -76,6 +58,7 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
 
     public void OnSelectionFill()
     {
+        Debug.Log("Selection filled");
         gameObject.SendMessage("OnExecute");
     }
 

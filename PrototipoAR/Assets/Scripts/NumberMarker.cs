@@ -7,31 +7,28 @@ public class NumberMarker : MonoBehaviour
 {
     public TextMeshProUGUI text;
     
-    bool isSolution;
     int number;
 
     void Start()
     {
-        isSolution = false;
     }
 
-    public void SetNumber(int num,bool sol)
+    public void SetNumber(int num)
     {
         number = num;
         text.text = num.ToString();
-        isSolution = sol;
         gameObject.SendMessage("SetSelectable", true);
+        text.enabled = true;
     }
 
     public void OnExecute()
     {
-        if (isSolution)
-        {
-            Debug.Log("Correct number");
+        if(GLOBALS.gameController.CheckNumber(number))
+        { 
+        
         }
         else
-        {
-            Debug.Log("Incorrect number");
+        {            
             gameObject.SendMessage("SetSelectable",false);
             text.enabled = false;
         }

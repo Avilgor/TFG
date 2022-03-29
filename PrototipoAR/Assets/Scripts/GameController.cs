@@ -10,16 +10,18 @@ public class GameController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI text;
 
-    GenerateOperation operationGenerator;
+    OperationGenerator operationGenerator;
 
     private void Awake()
     {
-        operationGenerator = new GenerateOperation();
+        GLOBALS.gameController = this;
+        operationGenerator = new OperationGenerator();
     }
 
     void Start()
     {
         GenerateNew();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     void Update()
@@ -32,10 +34,7 @@ public class GameController : MonoBehaviour
         List<string> testList = new List<string>();
         List<int> numList = new List<int>();
         testList.Add("+");
-        testList.Add("*");
-        testList.Add("-");
-        testList.Add("-");
-
+  
         operationGenerator.Generate(testList,Difficulty.DFF_EASY);
         text.text = operationGenerator.currentOperation + "= ?";
         numList.Add(operationGenerator.currentSolution);
@@ -53,5 +52,26 @@ public class GameController : MonoBehaviour
             Debug.Log("Number: "+numList[i]);
         }
         markerManager.SetMarkers(numList);
+    }
+
+    public bool CheckNumber(int num)
+    {
+        if (num == operationGenerator.currentSolution)
+        {
+            Debug.Log("Correct number");
+            StartCoroutine(NextOperation());
+            return true;
+        }
+        else
+        {
+            Debug.Log("Incorrect number");
+            return false;
+        }
+    }
+
+    IEnumerator NextOperation()
+    {
+        yield return new WaitForSeconds(1);
+        GenerateNew();
     }
 }
