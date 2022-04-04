@@ -20,8 +20,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        GenerateNew();
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        GenerateNew();       
     }
 
     void Update()

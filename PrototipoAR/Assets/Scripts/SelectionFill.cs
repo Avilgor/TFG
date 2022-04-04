@@ -28,10 +28,6 @@ public class SelectionFill : MonoBehaviour
 
     void Update()
     {
-        //Test
-        if (Input.GetKeyDown(KeyCode.Space)) StartFill(gameObject);
-        if (Input.GetKeyUp(KeyCode.Space)) StopFill();
-        //
         if (fill)
         {
             timer += Time.deltaTime;
@@ -45,6 +41,7 @@ public class SelectionFill : MonoBehaviour
                 fillImg.enabled = false;
                 //Call completion
                 if(fillRequester != null) fillRequester.SendMessage("OnSelectionFill");
+                fillRequester = null;
             }
         }
     }
