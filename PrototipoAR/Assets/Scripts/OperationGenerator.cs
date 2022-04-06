@@ -5,9 +5,9 @@ using UnityEngine;
 public enum OperatorType
 {
     OP_SUM = 0,
-    OP_RES,
-    OP_DIV,
-    OP_MUL
+    OP_SUB,
+    OP_MUL,
+    OP_DIV
 }
 
 public enum Difficulty
@@ -29,7 +29,7 @@ public class OperationGenerator
         currentSolution = 0;
     }
 
-    public void Generate(List<string> list, Difficulty diff)
+    public void Generate(List<OperatorType> list, Difficulty diff)
     {
         string txt = "";
         List<int> numbers = new List<int>();
@@ -41,12 +41,12 @@ public class OperationGenerator
                 int aux;
                 for (int i = 0;i < list.Count;i++)
                 {
-                    aux = Random.Range(1, 10);
-                    txt += aux.ToString();
-                    txt += list[i];
+                    aux = GetNumber(list[i], Difficulty.DFF_EASY);
+                    txt += aux.ToString() + " ";
+                    txt += GetOperatorString(list[i]) + " ";
                     numbers.Add(aux);
                 }
-                aux = Random.Range(1, 10);
+                aux = GetNumber(list[list.Count - 1], Difficulty.DFF_EASY);
                 txt += aux.ToString();
                 numbers.Add(aux);
                 break;
@@ -56,12 +56,12 @@ public class OperationGenerator
                 int aux2;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux2 = Random.Range(1, 21);
-                    txt += aux2.ToString();
-                    txt += list[i];
+                    aux2 = GetNumber(list[i], Difficulty.DFF_EASY2);
+                    txt += aux2.ToString() + " ";
+                    txt += GetOperatorString(list[i]) + " ";
                     numbers.Add(aux2);
                 }
-                aux2 = Random.Range(1, 21);
+                aux2 = GetNumber(list[list.Count - 1], Difficulty.DFF_EASY2);
                 txt += aux2.ToString();
                 numbers.Add(aux2);
                 break;
@@ -71,12 +71,12 @@ public class OperationGenerator
                 int aux3;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux3 = Random.Range(1, 51);
+                    aux3 = GetNumber(list[i], Difficulty.DFF_MED);
                     txt += aux3.ToString() + " ";
                     txt += list[i] + " ";
                     numbers.Add(aux3);
                 }
-                aux3 = Random.Range(1, 51);
+                aux3 = GetNumber(list[list.Count-1], Difficulty.DFF_MED);
                 txt += aux3.ToString();
                 numbers.Add(aux3);
                 break;
@@ -86,12 +86,12 @@ public class OperationGenerator
                 int aux4;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux4 = Random.Range(1, 100);
-                    txt += aux4.ToString();
-                    txt += list[i];
+                    aux4 = GetNumber(list[i], Difficulty.DFF_HARD);
+                    txt += aux4.ToString() + " ";
+                    txt += GetOperatorString(list[i]) + " "; 
                     numbers.Add(aux4);
                 }
-                aux4 = Random.Range(1, 100);
+                aux4 = GetNumber(list[list.Count - 1], Difficulty.DFF_HARD);
                 txt += aux4.ToString();
                 numbers.Add(aux4);
                 break;
@@ -104,14 +104,95 @@ public class OperationGenerator
         GenerateSolution(numbers,list);
     }
 
-    private void GenerateSolution(List<int> numbers,List<string> operators)
+    private string GetOperatorString(OperatorType type)
+    {
+        switch (type)
+        {
+            case OperatorType.OP_SUM:
+                return "+";
+            case OperatorType.OP_SUB:
+                return "-";
+            case OperatorType.OP_MUL:
+                return "*";
+            case OperatorType.OP_DIV:
+                return "/";
+            default:
+                Debug.Log("Operator type no found");
+                return " ";
+        }
+    }
+
+    private int GetNumber(OperatorType type, Difficulty diff)
+    {
+        switch (diff)
+        {
+            case Difficulty.DFF_EASY:
+                switch (type)
+                {
+                    case OperatorType.OP_SUM:
+                        return Random.Range(1, 10);
+                    case OperatorType.OP_SUB:
+                        return Random.Range(1, 10);
+                    case OperatorType.OP_MUL:
+                        return Random.Range(1, 3);
+                    case OperatorType.OP_DIV:
+                        return Random.Range(1, 3);
+                }                                
+                break;
+
+            case Difficulty.DFF_EASY2:
+                switch (type)
+                {
+                    case OperatorType.OP_SUM:
+                        return Random.Range(1, 21);
+                    case OperatorType.OP_SUB:
+                        return Random.Range(1, 21);
+                    case OperatorType.OP_MUL:
+                        return Random.Range(1, 3);
+                    case OperatorType.OP_DIV:
+                        return Random.Range(1, 3);
+                }
+                break;
+
+            case Difficulty.DFF_MED:
+                switch (type)
+                {
+                    case OperatorType.OP_SUM:
+                        return Random.Range(1, 51);
+                    case OperatorType.OP_SUB:
+                        return Random.Range(1, 51);
+                    case OperatorType.OP_MUL:
+                        return Random.Range(1, 4);
+                    case OperatorType.OP_DIV:
+                        return Random.Range(1, 4);
+                }
+                break;
+
+            case Difficulty.DFF_HARD:
+                switch (type)
+                {
+                    case OperatorType.OP_SUM:
+                        return Random.Range(1, 100);
+                    case OperatorType.OP_SUB:
+                        return Random.Range(1, 100);
+                    case OperatorType.OP_MUL:
+                        return Random.Range(1, 4);
+                    case OperatorType.OP_DIV:
+                        return Random.Range(1, 4);
+                }
+                break;
+        }
+        return 1;
+    }
+
+    private void GenerateSolution(List<int> numbers,List<OperatorType> operators)
     {
         int prior = 0;
 
         //Check how many priority operations are
         for (int i = 0; i < operators.Count; i++)
         {
-            if (operators[i].Equals("*") || operators[i].Equals("/")) prior++;
+            if (operators[i] == OperatorType.OP_MUL || operators[i] == OperatorType.OP_DIV) prior++;
         }
 
         if (prior > 0)
@@ -121,7 +202,7 @@ public class OperationGenerator
             {
                 for (int a = 0; a < operators.Count; a++)
                 {
-                    if (operators[a].Equals("*"))
+                    if (operators[a] == OperatorType.OP_MUL)
                     {
                         int aux = numbers[a] * numbers[a + 1];
                         numbers[a] = aux;
@@ -129,7 +210,7 @@ public class OperationGenerator
                         operators.RemoveAt(a);
                         break;
                     }
-                    else if (operators[a].Equals("/"))
+                    else if (operators[a] == OperatorType.OP_DIV)
                     {
                         int aux = numbers[a] / numbers[a + 1];
                         numbers[a] = aux;
@@ -147,14 +228,14 @@ public class OperationGenerator
             int index = operators.Count;
             for (int i = 0; i < index; i++)
             {
-                if (operators[0].Equals("+"))
+                if (operators[0] == OperatorType.OP_SUM)
                 {
                     int aux = numbers[0] + numbers[1];
                     numbers[0] = aux;
                     numbers.RemoveAt(1);
                     operators.RemoveAt(0);
                 }
-                else if (operators[0].Equals("-"))
+                else if (operators[0] == OperatorType.OP_SUB)
                 {
                     int aux = numbers[0] - numbers[1];
                     numbers[0] = aux;

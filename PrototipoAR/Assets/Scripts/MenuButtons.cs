@@ -15,6 +15,7 @@ public class MenuButtons : MonoBehaviour
     private void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        GLOBALS.LoadDefaultNodeData();
     }
 
     void Start()

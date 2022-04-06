@@ -30,9 +30,9 @@ public class GameController : MonoBehaviour
 
     private void GenerateNew()
     {
-        List<string> testList = new List<string>();
+        List<OperatorType> testList = new List<OperatorType>();
         List<int> numList = new List<int>();
-        testList.Add("+");
+        testList.Add(OperatorType.OP_SUM);
   
         operationGenerator.Generate(testList,Difficulty.DFF_EASY);
         text.text = operationGenerator.currentOperation + "= ?";

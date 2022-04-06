@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MTAR
+  m_text: ProtoAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da36ac95be1952943b5fd99bb301db53, type: 2}
   m_sharedMaterial: {fileID: 7724305218002619024, guid: da36ac95be1952943b5fd99bb301db53,
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
+  m_fontSize: 0.05
   m_fontSizeBase: 4.5
   m_fontWeight: 400
   m_enableAutoSizing: 1
