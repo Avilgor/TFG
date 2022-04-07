@@ -11,18 +11,25 @@ public class AdventureModeManager : MonoBehaviour
 
     [SerializeField]
     List<AdventureNode> nodes = new List<AdventureNode>();
-    
+
+    private void Awake()
+    {
+        GLOBALS.LoadDefaultNodeData();
+    }
 
     void Start()
     {
-        
+        LoadNodes();
     }
 
     private void LoadNodes()
     {
-        foreach (KeyValuePair<int,NodeInfo> node in GLOBALS.infoNodes)
+        for (int i = 0;i < nodes.Count;i++)
         {
-            
+            if (GLOBALS.infoNodes.ContainsKey(i))
+            {
+                nodes[i].SetNode(i,GLOBALS.infoNodes[i].state, GLOBALS.infoNodes[i].star1, GLOBALS.infoNodes[i].star2, GLOBALS.infoNodes[i].star3);
+            }
         }
     }
 
@@ -33,6 +40,8 @@ public class AdventureModeManager : MonoBehaviour
 
     public void StartMision(int level)
     {
-        SceneManager.LoadScene(4);
+        GLOBALS.currentGameMode = GameMode.MODE_ADVENTURE;
+        GLOBALS.currentNode = level;
+        SceneManager.LoadScene(2);
     }
 }

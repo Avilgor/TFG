@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class MissionPanel : MonoBehaviour
 {
     [SerializeField]
@@ -25,7 +26,7 @@ public class MissionPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetUpPanel(int level,bool star_1, bool star_2, bool star_3, MissionState state )
+    public void SetUpMissionPanel(int level,bool star_1, bool star_2, bool star_3, MissionState state)
     {
         currentLevel = level;
         levelTxt.text = "Level "+level.ToString();
@@ -39,8 +40,41 @@ public class MissionPanel : MonoBehaviour
         else star3.color = starEmpty;
 
         currentState = state;
-        if(state == MissionState.MISSION_LOCKED) playBtn.interactable = false;
-        else playBtn.interactable = true;       
+        if (playBtn != null)
+        {
+            if (state == MissionState.MISSION_LOCKED) playBtn.interactable = false;
+            else playBtn.interactable = true;
+        }
+    }
+
+    public void SetUpEndPanel(int level, bool star_1, bool star_2, bool star_3)
+    {
+        currentLevel = level;
+        levelTxt.text = "Level " + level.ToString();
+        if (star_1) star1.color = starFill;
+        else star1.color = starEmpty;
+
+        if (star_2) star2.color = starFill;
+        else star2.color = starEmpty;
+
+        if (star_3) star3.color = starFill;
+        else star3.color = starEmpty;
+
+
+    }
+
+    public void SetUpDailyChallengePanel(bool star_1, bool star_2, bool star_3)
+    {
+        levelTxt.text = "Daily challenge";
+        if (star_1) star1.color = starFill;
+        else star1.color = starEmpty;
+
+        if (star_2) star2.color = starFill;
+        else star2.color = starEmpty;
+
+        if (star_3) star3.color = starFill;
+        else star3.color = starEmpty;
+      
     }
 
     public void ClosePanel()

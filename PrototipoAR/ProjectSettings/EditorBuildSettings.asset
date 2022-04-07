@@ -12,14 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/AdventureMode.unity
     guid: 3b1f642a03e3cf1448adbfbba5548709
   - enabled: 1
-    path: Assets/Scenes/DailyChallenge.unity
+    path: Assets/Scenes/Game.unity
     guid: 3d027375fb521364dbd1c21bb61079f4
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 8a53741b1ca8b974d94326f36b196714
-  - enabled: 1
-    path: Assets/Scenes/AdventureGame.unity
-    guid: f708dcb9ff0db4740a4795a2aab107a2
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

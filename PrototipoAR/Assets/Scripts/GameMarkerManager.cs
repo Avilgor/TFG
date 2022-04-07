@@ -46,6 +46,14 @@ public class GameMarkerManager : MonoBehaviour
         }
     }
 
+    public void EndMarkers()
+    {
+        for (int i = 0; i < markers.Count; i++)
+        {
+            markers[i].EndMarker();
+        }
+    }
+
     public void HitMarker(GameObject go)
     {
         if (markersGo.Contains(go))

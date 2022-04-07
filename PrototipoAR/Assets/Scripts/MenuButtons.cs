@@ -15,7 +15,7 @@ public class MenuButtons : MonoBehaviour
     private void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        GLOBALS.LoadDefaultNodeData();
+        GLOBALS.StartData();
     }
 
     void Start()
@@ -31,6 +31,7 @@ public class MenuButtons : MonoBehaviour
                 SceneManager.LoadScene(1);
                 break;
             case MenuItem.MENU_CHALLENGE:
+                GLOBALS.currentGameMode = GameMode.MODE_CHALLENGE;
                 SceneManager.LoadScene(2);
                 break;
             case MenuItem.MENU_SHOP:

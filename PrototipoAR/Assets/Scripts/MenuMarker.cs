@@ -18,6 +18,14 @@ public class MenuMarker : MonoBehaviour
     [SerializeField]
     MenuButtons buttons;
 
+    private void Start()
+    {
+        if (menu == MenuItem.MENU_CHALLENGE)
+        {
+            if (!GLOBALS.challengeUp) GetComponent<SelectableMarker>().SetSelectable(false);
+        }
+    }
+
     public void OnExecute()
     {
         buttons.OnButtonToggle(menu);

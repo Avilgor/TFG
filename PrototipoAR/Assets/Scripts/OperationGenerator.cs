@@ -13,9 +13,9 @@ public enum OperatorType
 public enum Difficulty
 {
     DFF_EASY = 0, //All 1 digit
-    DFF_EASY2, //From 1 to 20
-    DFF_MED, //From 1 to 50
-    DFF_HARD //All 2 digits up to 99
+    DFF_EASY2 = 1, //From 1 to 20
+    DFF_MED = 2, //From 1 to 50
+    DFF_HARD = 3//All 2 digits up to 99
 }
 
 public class OperationGenerator

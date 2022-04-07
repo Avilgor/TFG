@@ -21,14 +21,16 @@ public class NumberMarker : MonoBehaviour
         text.enabled = true;
     }
 
+    public void EndMarker()
+    {
+        text.enabled = false;
+        gameObject.SendMessage("SetSelectable", false);
+    }
+
     public void OnExecute()
     {
-        if(GLOBALS.gameController.CheckNumber(number))
-        { 
-        
-        }
-        else
-        {            
+        if(!GLOBALS.gameController.CheckNumber(number))
+        {                    
             gameObject.SendMessage("SetSelectable",false);
             text.enabled = false;
         }

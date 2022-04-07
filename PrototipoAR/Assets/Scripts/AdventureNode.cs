@@ -75,6 +75,6 @@ public class AdventureNode : MonoBehaviour
     public void OpenMission()
     {
         panel.gameObject.SetActive(true);
-        panel.SetUpPanel(missionIndex, star1, star2, star3, state);
+        panel.SetUpMissionPanel(missionIndex, star1, star2, star3, state);
     }
 }

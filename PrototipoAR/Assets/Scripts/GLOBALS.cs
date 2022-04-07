@@ -1,15 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public enum GameMode
+{
+    MODE_ADVENTURE = 0,
+    MODE_CHALLENGE
+}
 
 public static class GLOBALS 
 {
     public static SelectionFill selectionFillUI = null;
     public static GameController gameController = null;
     public static GameMarkerManager gameMarkerManager = null;
+    public static PlayerData player = null;
 
     public static bool dataLoaded = false;
     public static Dictionary<int, NodeInfo> infoNodes = new Dictionary<int, NodeInfo>();
+    public static int currentNode = 0;
+    public static GameMode currentGameMode = GameMode.MODE_ADVENTURE;
+    public static bool challengeUp = false;
+
+    private static bool startUp = false;
+
+    public static void StartData()
+    {
+        if (!startUp)
+        {
+            player = new PlayerData();
+            LoadDefaultNodeData();
+            LoadSavedNodeData();
+            //System.DateTime.Now
+            startUp = true;
+        }
+    }
 
     public static void LoadDefaultNodeData()
     {
@@ -123,6 +148,99 @@ public static class GLOBALS
                     new NodeOperations(new List<OperatorType>() {
                         OperatorType.OP_SUM, OperatorType.OP_SUM})
             }));
+            infoNodes.Add(11, new NodeInfo(11, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(12, new NodeInfo(12, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                         OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(13, new NodeInfo(13, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(14, new NodeInfo(14, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(15, new NodeInfo(15, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY2, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(16, new NodeInfo(16, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY2, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB})
+            }));
+            infoNodes.Add(17, new NodeInfo(17, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUM})
+            }));
+            infoNodes.Add(18, new NodeInfo(18, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY2, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUM})
+            }));
+            infoNodes.Add(19, new NodeInfo(19, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY2, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUM}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUB, OperatorType.OP_SUM})
+            }));
+            infoNodes.Add(20, new NodeInfo(20, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY2, new List<NodeOperations>() {
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUM}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUM, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUM, OperatorType.OP_SUB, OperatorType.OP_SUM}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUB, OperatorType.OP_SUB}),
+                    new NodeOperations(new List<OperatorType>() {
+                        OperatorType.OP_SUB, OperatorType.OP_SUM, OperatorType.OP_SUM})
+            }));
+
             dataLoaded = true;
         }
     }
