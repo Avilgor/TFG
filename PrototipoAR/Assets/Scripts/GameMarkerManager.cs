@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CubeAlteration
+{
+    CUBE_NONE = 0,
+    CUBE_HOLED,
+    CUBE_TRAP,
+    CUBE_CRAZY
+}
+
 public class GameMarkerManager : MonoBehaviour
 {
     public List<NumberMarker> markers = new List<NumberMarker>();
 
     List<GameObject> markersGo = new List<GameObject>();
+    CubeAlteration currentAlteration;
 
     private void Awake()
     {
@@ -15,6 +24,7 @@ public class GameMarkerManager : MonoBehaviour
 
     void Start()
     {
+        currentAlteration = CubeAlteration.CUBE_NONE;
         for (int i = 0; i < markers.Count; i++) markersGo.Add(markers[i].gameObject);
     }
 
@@ -67,6 +77,21 @@ public class GameMarkerManager : MonoBehaviour
         if (markersGo.Contains(go))
         {
             go.GetComponent<SelectableMarker>().StopHit();
+        }
+    }
+
+    private void AlterCube(CubeAlteration alter)
+    {
+        switch (alter)
+        {
+            case CubeAlteration.CUBE_HOLED:
+                break;
+            case CubeAlteration.CUBE_CRAZY:
+                break;
+            case CubeAlteration.CUBE_TRAP:
+                break;
+            default:
+                break;
         }
     }
 }

@@ -191,6 +191,16 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void PowerUpCalculator()
+    {
+        
+    }
+
+    public void PowerUpCrono()
+    {
+        timer += 30;
+    }
+
     IEnumerator NextOperation()
     {
         yield return new WaitForSeconds(1);

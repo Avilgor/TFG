@@ -42,8 +42,11 @@ public class MissionPanel : MonoBehaviour
         currentState = state;
         if (playBtn != null)
         {
-            if (state == MissionState.MISSION_LOCKED) playBtn.interactable = false;
-            else playBtn.interactable = true;
+            if (GLOBALS.player.lifes > 0)
+            {
+                if (state == MissionState.MISSION_LOCKED) playBtn.interactable = false;
+                else playBtn.interactable = true;
+            }else playBtn.interactable = false;
         }
     }
 

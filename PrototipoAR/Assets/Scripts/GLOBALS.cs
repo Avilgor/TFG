@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public enum GameMode
 {
     MODE_ADVENTURE = 0,
@@ -11,6 +12,7 @@ public enum GameMode
 
 public static class GLOBALS 
 {
+    public const int LIFERECOVERYTIME = 5;
     public static SelectionFill selectionFillUI = null;
     public static GameController gameController = null;
     public static GameMarkerManager gameMarkerManager = null;
@@ -20,7 +22,6 @@ public static class GLOBALS
     public static Dictionary<int, NodeInfo> infoNodes = new Dictionary<int, NodeInfo>();
     public static int currentNode = 0;
     public static GameMode currentGameMode = GameMode.MODE_ADVENTURE;
-    public static bool challengeUp = false;
 
     private static bool startUp = false;
 
@@ -30,9 +31,10 @@ public static class GLOBALS
         {
             player = new PlayerData();
             LoadDefaultNodeData();
-            LoadSavedNodeData();
+            //LoadSavedNodeData();
             //System.DateTime.Now
             startUp = true;
+            Debug.Log("App start up done.");
         }
     }
 
@@ -242,6 +244,7 @@ public static class GLOBALS
             }));
 
             dataLoaded = true;
+            Debug.Log("Loaded default data");
         }
     }
 
@@ -253,6 +256,7 @@ public static class GLOBALS
             {
                 infoNodes[0].UpdateNode(MissionState.MISSION_COMPLETED,true,true,false);
             }
+            Debug.Log("Loaded saved data");
         }
     }
 }

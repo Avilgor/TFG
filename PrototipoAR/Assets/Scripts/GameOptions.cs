@@ -1,18 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOptions : MonoBehaviour
 {
     [SerializeField]
     GameObject optionsPanel;
-    bool open;  
+    [SerializeField]
+    TextMeshProUGUI calculatorTxt, cronoTxt;
+    [SerializeField]
+    Button calculatorBtn, cronoBtn;
+    bool open;
 
     void Start()
     {
         optionsPanel.SetActive(false);
-        open = false;    
+        open = false;
+        calculatorTxt.text = GLOBALS.player.calculatorPower.ToString();
+        cronoTxt.text = GLOBALS.player.cronoPower.ToString();
+        if (GLOBALS.currentGameMode == GameMode.MODE_ADVENTURE)
+        {
+            if (GLOBALS.player.cronoPower > 0) cronoBtn.interactable = true;
+            else cronoBtn.interactable = false;
+            if (GLOBALS.player.calculatorPower > 0) calculatorBtn.interactable = true;
+            else calculatorBtn.interactable = false;
+        }
+        else
+        {
+            cronoBtn.interactable = false;
+            calculatorBtn.interactable = false;
+        }
     }
 
     public void ToggleOptions()
@@ -26,6 +46,25 @@ public class GameOptions : MonoBehaviour
         {
             optionsPanel.SetActive(true);
             open = true;
+        }
+    }
+
+    public void UseCalculator()
+    {
+        if (GLOBALS.player.calculatorPower > 0)
+        {
+            GLOBALS.player.calculatorPower--;
+            if (GLOBALS.player.calculatorPower <= 0) calculatorBtn.interactable = false;            
+        }
+    }
+
+    public void UseCrono()
+    {
+        if (GLOBALS.player.cronoPower > 0)
+        {
+            GLOBALS.player.cronoPower--;
+            GLOBALS.gameController.PowerUpCrono();
+            if (GLOBALS.player.cronoPower <= 0) cronoBtn.interactable = false;
         }
     }
 

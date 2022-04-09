@@ -20,7 +20,15 @@ public class MenuButtons : MonoBehaviour
 
     void Start()
     {
+        if(GLOBALS.player.CheckDailyChallenge())
         optionsScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1)) OnButtonToggle(MenuItem.MENU_ADVENTURE);
+        if (Input.GetKeyDown(KeyCode.F2)) OnButtonToggle(MenuItem.MENU_CHALLENGE);
+        if (Input.GetKeyDown(KeyCode.F3)) OnButtonToggle(MenuItem.MENU_SHOP);
     }
 
     public void OnButtonToggle(MenuItem item)

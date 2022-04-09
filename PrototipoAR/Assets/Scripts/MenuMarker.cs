@@ -22,7 +22,8 @@ public class MenuMarker : MonoBehaviour
     {
         if (menu == MenuItem.MENU_CHALLENGE)
         {
-            if (!GLOBALS.challengeUp) GetComponent<SelectableMarker>().SetSelectable(false);
+            if (GLOBALS.player.CheckDailyChallenge()) GetComponent<SelectableMarker>().SetSelectable(true);
+            else GetComponent<SelectableMarker>().SetSelectable(false);
         }
     }
 
