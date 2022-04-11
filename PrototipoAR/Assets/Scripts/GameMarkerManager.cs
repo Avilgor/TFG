@@ -15,7 +15,7 @@ public class GameMarkerManager : MonoBehaviour
     public List<NumberMarker> markers = new List<NumberMarker>();
 
     List<GameObject> markersGo = new List<GameObject>();
-    CubeAlteration currentAlteration;
+    public CubeAlteration currentAlteration;
 
     private void Awake()
     {
@@ -80,18 +80,29 @@ public class GameMarkerManager : MonoBehaviour
         }
     }
 
-    private void AlterCube(CubeAlteration alter)
+    public void AlterCube(CubeAlteration alter)
     {
         switch (alter)
         {
             case CubeAlteration.CUBE_HOLED:
+                currentAlteration = alter;
                 break;
             case CubeAlteration.CUBE_CRAZY:
+                StartCoroutine(CrazyCube());
+                currentAlteration = alter;
                 break;
             case CubeAlteration.CUBE_TRAP:
+                currentAlteration = alter;
                 break;
             default:
                 break;
         }
+    }
+
+    IEnumerator CrazyCube()
+    {
+        yield return new WaitForSeconds(5);
+
+        if (currentAlteration == CubeAlteration.CUBE_CRAZY) StartCoroutine(CrazyCube());
     }
 }

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-
 
 public enum GameMode
 {
@@ -31,11 +29,24 @@ public static class GLOBALS
         {
             player = new PlayerData();
             LoadDefaultNodeData();
-            //LoadSavedNodeData();
-            //System.DateTime.Now
+            if (Encription.DecryptFile())
+            {
+                //Load save
+                XMLSerialization.LoadXMLData();
+                player.LifeCD();
+                Encription.EncryptFile();
+            }
+            else Debug.Log("Error loading save data: Save file not found.");
             startUp = true;
             Debug.Log("App start up done.");
         }
+    }
+
+    public static void SaveGame()
+    {
+        player.LifeCD();
+        XMLSerialization.SaveXMLData();
+        Encription.EncryptFile();
     }
 
     public static void LoadDefaultNodeData()
@@ -245,18 +256,6 @@ public static class GLOBALS
 
             dataLoaded = true;
             Debug.Log("Loaded default data");
-        }
-    }
-
-    public static void LoadSavedNodeData()
-    {
-        if (dataLoaded)
-        {
-            for (int i = 0;i < infoNodes.Count;i++)
-            {
-                infoNodes[0].UpdateNode(MissionState.MISSION_COMPLETED,true,true,false);
-            }
-            Debug.Log("Loaded saved data");
         }
     }
 }

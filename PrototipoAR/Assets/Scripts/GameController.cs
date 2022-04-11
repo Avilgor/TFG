@@ -193,7 +193,10 @@ public class GameController : MonoBehaviour
 
     public void PowerUpCalculator()
     {
-        
+        if (markerManager.currentAlteration != CubeAlteration.CUBE_HOLED)
+        {
+            markerManager.AlterCube(CubeAlteration.CUBE_HOLED);
+        }
     }
 
     public void PowerUpCrono()

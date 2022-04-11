@@ -54,6 +54,8 @@ public class GameOptions : MonoBehaviour
         if (GLOBALS.player.calculatorPower > 0)
         {
             GLOBALS.player.calculatorPower--;
+            calculatorTxt.text = GLOBALS.player.calculatorPower.ToString();
+            GLOBALS.gameController.PowerUpCalculator();
             if (GLOBALS.player.calculatorPower <= 0) calculatorBtn.interactable = false;            
         }
     }
@@ -63,6 +65,7 @@ public class GameOptions : MonoBehaviour
         if (GLOBALS.player.cronoPower > 0)
         {
             GLOBALS.player.cronoPower--;
+            cronoTxt.text = GLOBALS.player.cronoPower.ToString();
             GLOBALS.gameController.PowerUpCrono();
             if (GLOBALS.player.cronoPower <= 0) cronoBtn.interactable = false;
         }

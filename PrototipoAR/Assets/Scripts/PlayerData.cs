@@ -39,6 +39,7 @@ public class PlayerData
             int lifeRecovered = (int)Math.Truncate(activeCd / GLOBALS.LIFERECOVERYTIME);
             UpdateLife(lifeRecovered);
             activeCd -= lifeRecovered * GLOBALS.LIFERECOVERYTIME;
+            lastTime = DateTime.Now;
             if (lifes < MaxLifes) return true;
             else return false;
         }
@@ -49,35 +50,21 @@ public class PlayerData
         }
     }
 
+    public DateTime GetLastTime()
+    {
+        return lastTime;
+    }
+
+    public void SetLastTime(int day, int month, int year, int hour, int min, int sec)
+    {
+        lastTime = new DateTime(day,month,year,hour,min,sec);
+    }
+
     public void UpdateLife(int num)
     {
         lifes += num;
         if (lifes < 0) lifes = 0;
         else if (lifes > MaxLifes) lifes = MaxLifes;
         lastTime = DateTime.Now;
-    }
-
-    public void SavePlayer()
-    {
-        //DateTime.now;
-        //lifes
-        //lifeUpgrades
-        //stars
-        //calculatorPower
-        //cronoPower
-        //activeCd
-    }
-
-    public void LoadPlayer()
-    {
-        //lastTime
-        //lifes
-        //lifeUpgrades
-        //stars
-        //calculatorPower
-        //cronoPower
-        //ActiveCd
-        //Check lifes recovered since last start
-        LifeCD();
     }
 }
