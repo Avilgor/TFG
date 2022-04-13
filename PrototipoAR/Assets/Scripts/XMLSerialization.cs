@@ -27,7 +27,7 @@ public static class XMLSerialization
             node = doc["Settings"];
             if (node != null)
             {
-                //if (node["Music"] != null) Globals.musicOn = bool.Parse(node["Music"].GetAttribute("value"));
+                if (node["Sound"] != null) GLOBALS.soundOn = bool.Parse(node["Sound"].GetAttribute("value"));
             }
             else Debug.LogWarning("Settings node not found");
 
@@ -108,9 +108,9 @@ public static class XMLSerialization
         ////Settings///
         XmlElement settings = xmlDocument.CreateElement("Settings");
 
-        /*XmlElement music = xmlDocument.CreateElement("Music");
-        music.SetAttribute("value", GLOBALS.musicOn.ToString());
-        settings.AppendChild(music);*/
+        XmlElement Sound = xmlDocument.CreateElement("Sound");
+        Sound.SetAttribute("value", GLOBALS.soundOn.ToString());
+        settings.AppendChild(Sound);
 
         root.AppendChild(settings);       
         //////////////

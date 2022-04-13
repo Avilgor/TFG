@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum GameAlteration
+{
+    ALT_NONE = 0,
+    ALT_CUBEHOLED,
+    ALT_CUBETRAP,
+    ALT_CUBECRAZY,
+    ALT_GOLD
+}
+
 public class GameController : MonoBehaviour
 {
     public GameMarkerManager markerManager;
+    public GameOptions gameOptions;
 
     [SerializeField]
     MissionPanel panel;
     [SerializeField]
     TextMeshProUGUI text,timerTxt;
+    [SerializeField]
+    Color goldAlterColor,defaultColor;
 
     OperationGenerator operationGenerator;
     int totalOperations,operationIndex;
@@ -18,6 +30,8 @@ public class GameController : MonoBehaviour
     float timer;
     bool results;
     ChallengeNode challengeNode;
+    Difficulty currentNodeDifficulty;
+    public GameAlteration currentAlteration;
 
     private void Awake()
     {
@@ -27,6 +41,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        currentAlteration = GameAlteration.ALT_NONE;
+        currentNodeDifficulty = Difficulty.DFF_EASY;
         operationIndex = 0;
         results = false;
         failed = false;
@@ -63,7 +79,7 @@ public class GameController : MonoBehaviour
     private void GenerateNew(List<OperatorType> list, Difficulty diff)
     {
         List<int> numList = new List<int>();
-  
+        currentNodeDifficulty = diff;
         operationGenerator.Generate(list, diff);
         text.text = operationGenerator.currentOperation + "= ?";
         numList.Add(operationGenerator.currentSolution);
@@ -81,6 +97,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Number: "+numList[i]);
         }
         markerManager.SetMarkers(numList);
+        AlterCube();
     }
 
     public bool CheckNumber(int num)
@@ -91,6 +108,10 @@ public class GameController : MonoBehaviour
             totalOperations--;
             operationIndex++;
             StartCoroutine(NextOperation());
+            if (currentAlteration == GameAlteration.ALT_GOLD)
+            {
+                GLOBALS.player.stars += 1;
+            }
             return true;
         }
         else
@@ -103,6 +124,59 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void AlterCube()
+    {
+        int roll = Random.Range(1,101);
+
+        if (roll <= 5)
+        {
+            string aux = text.text;
+            text.text = "<color=#" + ColorUtility.ToHtmlStringRGB(goldAlterColor) + ">" + aux + "</color>";
+            gameOptions.ToogleCalculatorButton(true);
+            markerManager.AlterCube(currentAlteration);
+        }
+        else if (roll <= 10)
+        {
+            roll = Random.Range(0, 3);
+            switch (roll)
+            {
+                case 0:
+                    currentAlteration = GameAlteration.ALT_CUBEHOLED;
+                    markerManager.AlterCube(currentAlteration);
+                    gameOptions.ToogleCalculatorButton(false);
+                    break;
+                case 1:
+                    currentAlteration = GameAlteration.ALT_CUBETRAP;
+                    markerManager.AlterCube(currentAlteration);
+                    gameOptions.ToogleCalculatorButton(true);
+                    break;
+                case 2:
+                    currentAlteration = GameAlteration.ALT_CUBECRAZY;
+                    markerManager.AlterCube(currentAlteration);
+                    gameOptions.ToogleCalculatorButton(true);
+                    break;
+            }
+        }
+        else
+        {            
+            string aux = text.text;
+            text.text = "<color=#" + ColorUtility.ToHtmlStringRGB(defaultColor) + ">" + aux + "</color>";
+            currentAlteration = GameAlteration.ALT_NONE;
+            gameOptions.ToogleCalculatorButton(true);
+            markerManager.AlterCube(currentAlteration);
+        }
+    }
+
+    public int GetOperationResult()
+    {
+        return operationGenerator.currentSolution;
+    }
+
+    public Difficulty GetNodeDifficulty()
+    {
+        return currentNodeDifficulty;
+    }
+
     private void ShowResultsAdventure()
     {
         panel.gameObject.SetActive(true);
@@ -110,7 +184,6 @@ public class GameController : MonoBehaviour
             GLOBALS.infoNodes[GLOBALS.currentNode].star1, 
             GLOBALS.infoNodes[GLOBALS.currentNode].star2, 
             GLOBALS.infoNodes[GLOBALS.currentNode].star3);
-
     }
 
     private void ShowResultsChallenge(bool s1,bool s2,bool s3)
@@ -193,9 +266,9 @@ public class GameController : MonoBehaviour
 
     public void PowerUpCalculator()
     {
-        if (markerManager.currentAlteration != CubeAlteration.CUBE_HOLED)
+        if (currentAlteration != GameAlteration.ALT_CUBEHOLED)
         {
-            markerManager.AlterCube(CubeAlteration.CUBE_HOLED);
+            markerManager.AlterCube(GameAlteration.ALT_CUBEHOLED);
         }
     }
 

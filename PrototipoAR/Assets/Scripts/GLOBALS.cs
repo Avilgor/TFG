@@ -11,11 +11,15 @@ public enum GameMode
 public static class GLOBALS 
 {
     public const int LIFERECOVERYTIME = 5;
+    public const int LIFEPRICE = 40;
+    public const int CRONOPRICE = 5; 
+    public const int CALCULATORPRICE = 10;
     public static SelectionFill selectionFillUI = null;
     public static GameController gameController = null;
     public static GameMarkerManager gameMarkerManager = null;
     public static PlayerData player = null;
 
+    public static bool soundOn;
     public static bool dataLoaded = false;
     public static Dictionary<int, NodeInfo> infoNodes = new Dictionary<int, NodeInfo>();
     public static int currentNode = 0;
@@ -27,6 +31,7 @@ public static class GLOBALS
     {
         if (!startUp)
         {
+            soundOn = true;
             player = new PlayerData();
             LoadDefaultNodeData();
             if (Encription.DecryptFile())

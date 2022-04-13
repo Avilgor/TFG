@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuButtons : MonoBehaviour
 {
     public Texture2D cubeImg;
-
     [SerializeField]
-    SelectableMarker optionsMarker;
+    Sprite soundOn, soundOff;
     [SerializeField]
-    GameObject optionsScreen;
+    Image soundImg;
+    [SerializeField]
+    SelectableMarker optionsMarker, shopMarker;
+    [SerializeField]
+    GameObject optionsScreen, shopScreen;
+    [SerializeField]
+    Button btnLife, btnCrono, btnCalculator;
+    [SerializeField]
+    TextMeshProUGUI starsTxt,lifePriceTxt,cronoPriceTxt,calculatorPriceTxt;
 
     private void Awake()
     {
@@ -20,8 +29,8 @@ public class MenuButtons : MonoBehaviour
 
     void Start()
     {
-        if(GLOBALS.player.CheckDailyChallenge())
-        optionsScreen.SetActive(false);
+        if (GLOBALS.player.CheckDailyChallenge())
+            optionsScreen.SetActive(false);
     }
 
     private void Update()
@@ -43,7 +52,7 @@ public class MenuButtons : MonoBehaviour
                 SceneManager.LoadScene(2);
                 break;
             case MenuItem.MENU_SHOP:
-                SceneManager.LoadScene(3);
+                OpenShop();
                 break;
             case MenuItem.MENU_OPTIONS:
                 OpenOptions();
@@ -58,12 +67,68 @@ public class MenuButtons : MonoBehaviour
     {
         optionsMarker.SetSelectable(false);
         optionsScreen.SetActive(true);
+        if (GLOBALS.soundOn) soundImg.sprite = soundOn;
+        else soundImg.sprite = soundOff;
     }
 
     public void CloseOptions()
     {
         optionsMarker.SetSelectable(true);
         optionsScreen.SetActive(false);
+    }
+
+    public void OpenShop()
+    {
+        shopMarker.SetSelectable(false);
+        shopScreen.SetActive(true);
+        lifePriceTxt.text = GLOBALS.LIFEPRICE.ToString();
+        cronoPriceTxt.text = GLOBALS.CRONOPRICE.ToString();
+        calculatorPriceTxt.text = GLOBALS.CALCULATORPRICE.ToString();
+        UpdateShop();
+    }
+
+    public void CloseShop()
+    {
+        shopMarker.SetSelectable(true);
+        shopScreen.SetActive(false);
+    }
+
+    private void UpdateShop()
+    {
+        if (GLOBALS.player.stars >= GLOBALS.LIFEPRICE) btnLife.interactable = false;
+        if (GLOBALS.player.stars >= GLOBALS.CRONOPRICE) btnCrono.interactable = false;
+        if (GLOBALS.player.stars >= GLOBALS.CALCULATORPRICE) btnCalculator.interactable = false;
+        starsTxt.text = GLOBALS.player.stars.ToString();
+    }
+
+    public void BuyLife()
+    {
+        GLOBALS.player.stars -= GLOBALS.LIFEPRICE;
+        GLOBALS.player.lifeUpgrades += 1;
+        GLOBALS.player.lifes += 1;
+        GLOBALS.player.MaxLifes += 1;
+        UpdateShop();
+    }
+
+    public void BuyCrono()
+    {
+        GLOBALS.player.stars -= GLOBALS.CRONOPRICE;
+        GLOBALS.player.cronoPower += 1;
+        UpdateShop();
+    }
+
+    public void BuyCalculator()
+    {
+        GLOBALS.player.stars -= GLOBALS.CALCULATORPRICE;
+        GLOBALS.player.calculatorPower += 1;
+        UpdateShop();
+    }
+
+    public void ToggleSound()
+    {
+        GLOBALS.soundOn = !GLOBALS.soundOn;
+        if (GLOBALS.soundOn) soundImg.sprite = soundOn;
+        else soundImg.sprite = soundOff;
     }
 
     public void QuitGame()

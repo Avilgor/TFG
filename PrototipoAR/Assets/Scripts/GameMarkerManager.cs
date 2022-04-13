@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CubeAlteration
-{
-    CUBE_NONE = 0,
-    CUBE_HOLED,
-    CUBE_TRAP,
-    CUBE_CRAZY
-}
 
 public class GameMarkerManager : MonoBehaviour
 {
+    [SerializeField]
+    Sprite cubeHole, cubeLock1, cubeLock2, cubeLock3, cubeLock4, cubeLock5;
     public List<NumberMarker> markers = new List<NumberMarker>();
 
     List<GameObject> markersGo = new List<GameObject>();
-    public CubeAlteration currentAlteration;
 
     private void Awake()
     {
@@ -24,7 +18,6 @@ public class GameMarkerManager : MonoBehaviour
 
     void Start()
     {
-        currentAlteration = CubeAlteration.CUBE_NONE;
         for (int i = 0; i < markers.Count; i++) markersGo.Add(markers[i].gameObject);
     }
 
@@ -80,29 +73,142 @@ public class GameMarkerManager : MonoBehaviour
         }
     }
 
-    public void AlterCube(CubeAlteration alter)
+    public void AlterCube(GameAlteration alter)
     {
+        int aux;
         switch (alter)
         {
-            case CubeAlteration.CUBE_HOLED:
-                currentAlteration = alter;
+            case GameAlteration.ALT_CUBEHOLED:
+                int total = 0;
+                int sol = GLOBALS.gameController.GetOperationResult();
+                do
+                {
+                    aux = Random.Range(0,markers.Count);
+                    if (markers[aux].number != sol && markers[aux].IsOpen())
+                    {
+                        markers[aux].HoledFace(cubeHole);
+                        total++;
+                    }
+                } while (total < 3);
                 break;
-            case CubeAlteration.CUBE_CRAZY:
+
+            case GameAlteration.ALT_CUBECRAZY:
                 StartCoroutine(CrazyCube());
-                currentAlteration = alter;
                 break;
-            case CubeAlteration.CUBE_TRAP:
-                currentAlteration = alter;
+
+            case GameAlteration.ALT_CUBETRAP:
+                List<NumberMarker> toSet = new List<NumberMarker>(markers);
+                switch (GLOBALS.gameController.GetNodeDifficulty())
+                {
+                    case Difficulty.DFF_EASY:
+                        for (int i = 0;i<2;i++)
+                        {
+                            aux = Random.Range(0,toSet.Count);
+                            toSet[aux].LockFace(cubeLock1,5,1);
+                            toSet.RemoveAt(aux);
+                        }
+                        break;
+                    case Difficulty.DFF_EASY2:
+                        for (int i = 0; i < 3; i++)
+                        {
+                            aux = Random.Range(0, toSet.Count);
+                            toSet[aux].LockFace(cubeLock1, 10,2);
+                            toSet.RemoveAt(aux);
+                        }
+                        break;
+                    case Difficulty.DFF_MED:
+                        for (int i = 0; i < 4; i++)
+                        {
+                            aux = Random.Range(0, toSet.Count);
+                            toSet[aux].LockFace(cubeLock1, 15,3);
+                            toSet.RemoveAt(aux);
+                        }
+                        break;
+                    case Difficulty.DFF_HARD:
+                        for (int i = 0; i < 4; i++)
+                        {
+                            aux = Random.Range(0, toSet.Count);
+                            toSet[aux].LockFace(cubeLock1, 20,4);
+                            toSet.RemoveAt(aux);
+                        }
+                        break;
+                }
+                break;
+
+            case GameAlteration.ALT_GOLD:
+            case GameAlteration.ALT_NONE:
+                for (int i = 0; i < markers.Count; i++)
+                {
+                    markers[i].DisableAlterations();
+                    markers[i].ToggleSelectable(true);
+                    markers[i].ToggleText(true);
+                }
                 break;
             default:
+                Debug.Log("Cube alteration "+alter+" not found.");
                 break;
         }
+    }
+
+    public Sprite GetLockSprite(int index)
+    {
+        switch(index)
+        {
+            case 1:
+                return cubeLock1;
+            case 2:
+                return cubeLock2;
+            case 3:
+                return cubeLock3;
+            case 4:
+                return cubeLock4;
+            case 5:
+                return cubeLock5;
+            default:
+                return cubeLock1;
+        }
+    }
+
+    private List<T> ShuffleList<T>(List<T> list)
+    {
+        int count = list.Count;
+        int last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            int r = Random.Range(i, count);
+            var tmp = list[i];
+            list[i] = list[r];
+            list[r] = tmp;
+        }
+        return list;
     }
 
     IEnumerator CrazyCube()
     {
         yield return new WaitForSeconds(5);
+        List<NumberMarker> openList = new List<NumberMarker>(); 
+        List<int> numberList = new List<int>();
 
-        if (currentAlteration == CubeAlteration.CUBE_CRAZY) StartCoroutine(CrazyCube());
+        for (int i = 0; i < markers.Count; i++)
+        {
+            if (markers[i].IsOpen())
+            {
+                openList.Add(markers[i]);
+                numberList.Add(markers[i].number);
+            }
+        }
+      
+        if (openList.Count > 1)
+        {
+            openList = ShuffleList(openList);
+            numberList = ShuffleList(numberList);
+           
+            for (int i = 0; i < openList.Count; i++)
+            {
+                openList[i].SetNumber(numberList[i]);
+            }
+        }
+       
+        if (GLOBALS.gameController.currentAlteration == GameAlteration.ALT_CUBECRAZY) StartCoroutine(CrazyCube());
     }
 }

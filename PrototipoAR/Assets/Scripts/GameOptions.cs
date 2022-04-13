@@ -71,6 +71,16 @@ public class GameOptions : MonoBehaviour
         }
     }
 
+    public void ToogleCronoButton(bool val)
+    {
+        cronoBtn.interactable = val;
+    }
+
+    public void ToogleCalculatorButton(bool val)
+    {
+        calculatorBtn.interactable = val;
+    }
+
     public void ExitGame()
     {
         if (GLOBALS.currentGameMode == GameMode.MODE_CHALLENGE) SceneManager.LoadScene(0);
