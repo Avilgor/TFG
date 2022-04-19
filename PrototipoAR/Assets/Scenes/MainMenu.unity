@@ -4605,6 +4605,7 @@ MonoBehaviour:
   soundImg: {fileID: 1107523929}
   optionsMarker: {fileID: 11549175}
   shopMarker: {fileID: 1001653674}
+  challengeMarker: {fileID: 733424301}
   optionsScreen: {fileID: 1861301289}
   shopScreen: {fileID: 1159311716}
   btnLife: {fileID: 609283691}

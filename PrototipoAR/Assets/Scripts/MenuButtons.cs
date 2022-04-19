@@ -13,7 +13,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField]
     Image soundImg;
     [SerializeField]
-    SelectableMarker optionsMarker, shopMarker;
+    SelectableMarker optionsMarker, shopMarker,challengeMarker;
     [SerializeField]
     GameObject optionsScreen, shopScreen;
     [SerializeField]
@@ -29,8 +29,9 @@ public class MenuButtons : MonoBehaviour
 
     void Start()
     {
-        if (GLOBALS.player.CheckDailyChallenge())
-            optionsScreen.SetActive(false);
+        shopScreen.SetActive(false);
+        optionsScreen.SetActive(false);
+        challengeMarker.SetSelectable(GLOBALS.player.CheckDailyChallenge());
     }
 
     private void Update()
@@ -95,9 +96,12 @@ public class MenuButtons : MonoBehaviour
 
     private void UpdateShop()
     {
-        if (GLOBALS.player.stars >= GLOBALS.LIFEPRICE) btnLife.interactable = false;
-        if (GLOBALS.player.stars >= GLOBALS.CRONOPRICE) btnCrono.interactable = false;
-        if (GLOBALS.player.stars >= GLOBALS.CALCULATORPRICE) btnCalculator.interactable = false;
+        if (GLOBALS.player.stars >= GLOBALS.LIFEPRICE) btnLife.interactable = true;
+        else btnLife.interactable = false;
+        if (GLOBALS.player.stars >= GLOBALS.CRONOPRICE) btnCrono.interactable = true;
+        else btnCrono.interactable = false;
+        if (GLOBALS.player.stars >= GLOBALS.CALCULATORPRICE) btnCalculator.interactable = true;
+        else btnCalculator.interactable = false;
         starsTxt.text = GLOBALS.player.stars.ToString();
     }
 
@@ -129,6 +133,7 @@ public class MenuButtons : MonoBehaviour
         GLOBALS.soundOn = !GLOBALS.soundOn;
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
+        XMLSerialization.SaveXMLData();
     }
 
     public void QuitGame()

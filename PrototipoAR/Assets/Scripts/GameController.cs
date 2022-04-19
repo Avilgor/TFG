@@ -184,6 +184,7 @@ public class GameController : MonoBehaviour
             GLOBALS.infoNodes[GLOBALS.currentNode].star1, 
             GLOBALS.infoNodes[GLOBALS.currentNode].star2, 
             GLOBALS.infoNodes[GLOBALS.currentNode].star3);
+        LevelRewards.OnLevelEnd(GLOBALS.currentNode);
     }
 
     private void ShowResultsChallenge(bool s1,bool s2,bool s3)
@@ -245,6 +246,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            GLOBALS.player.challengeDone = true;
             if (totalOperations == 0)
             {
                 GLOBALS.player.stars += 3;
@@ -262,6 +264,7 @@ public class GameController : MonoBehaviour
             }
             else ShowResultsChallenge(false, false, false);
         }
+        XMLSerialization.SaveXMLData();
     }
 
     public void PowerUpCalculator()
@@ -269,12 +272,14 @@ public class GameController : MonoBehaviour
         if (currentAlteration != GameAlteration.ALT_CUBEHOLED)
         {
             markerManager.AlterCube(GameAlteration.ALT_CUBEHOLED);
+            XMLSerialization.SaveXMLData();
         }
     }
 
     public void PowerUpCrono()
     {
         timer += 30;
+        XMLSerialization.SaveXMLData();
     }
 
     IEnumerator NextOperation()

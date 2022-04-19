@@ -7,11 +7,13 @@ public class PlayerData
 {
     public int stars, calculatorPower, cronoPower;
     public int MaxLifes, lifes, lifeUpgrades;
+    public bool challengeDone;
     DateTime lastTime;
     public float activeCd;
 
     public PlayerData()
     {
+        challengeDone = false;
         activeCd = 0;
         lifeUpgrades = 0;
         lifes = 2;
@@ -24,11 +26,27 @@ public class PlayerData
 
     public bool CheckDailyChallenge()
     {
-        DateTime now = DateTime.Now;
-        if (now.Year > lastTime.Year) return true;
-        else if (now.Month > lastTime.Month) return true;
-        else if (now.Day > lastTime.Day) return true;
-        else return false;
+        if (challengeDone)
+        {
+            DateTime now = DateTime.Now;
+            if (now.Year > lastTime.Year)
+            {
+                challengeDone = false;
+                return true;
+            }
+            else if (now.Month > lastTime.Month)
+            {
+                challengeDone = false;
+                return true;
+            }
+            else if (now.Day > lastTime.Day)
+            {
+                challengeDone = false;
+                return true;
+            }
+            else return false;
+        }
+        else return true;
     }
 
     public bool LifeCD()

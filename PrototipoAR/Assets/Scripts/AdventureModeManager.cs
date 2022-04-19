@@ -19,11 +19,10 @@ public class AdventureModeManager : MonoBehaviour
     float lifeCd;
     bool lifeRecovery;
 
-    private void Awake()
+    /*private void Awake()
     {
-        GLOBALS.LoadDefaultNodeData();
-       
-    }
+        GLOBALS.LoadDefaultNodeData();       
+    }*/
 
     void Start()
     {
@@ -68,9 +67,9 @@ public class AdventureModeManager : MonoBehaviour
     {
         for (int i = 0;i < nodes.Count;i++)
         {
-            if (GLOBALS.infoNodes.ContainsKey(i))
+            if (GLOBALS.infoNodes.ContainsKey(i+1))
             {
-                nodes[i].SetNode(i,GLOBALS.infoNodes[i].state, GLOBALS.infoNodes[i].star1, GLOBALS.infoNodes[i].star2, GLOBALS.infoNodes[i].star3);
+                nodes[i].SetNode(i+1,GLOBALS.infoNodes[i+1].state, GLOBALS.infoNodes[i+1].star1, GLOBALS.infoNodes[i+1].star2, GLOBALS.infoNodes[i+1].star3);
             }
         }
     }

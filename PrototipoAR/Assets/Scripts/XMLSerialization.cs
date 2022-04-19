@@ -45,6 +45,7 @@ public static class XMLSerialization
                 if (node["Lifes"] != null) GLOBALS.player.lifes = int.Parse(node["Lifes"].GetAttribute("value"));
                 if (node["LifeUpgrades"] != null) GLOBALS.player.lifeUpgrades = int.Parse(node["LifeUpgrades"].GetAttribute("value"));
                 if (node["ActiveCD"] != null) GLOBALS.player.activeCd = int.Parse(node["ActiveCD"].GetAttribute("value"));
+                if (node["Challenge"] != null) GLOBALS.player.challengeDone = bool.Parse(node["Challenge"].GetAttribute("value"));
                 if (node["LastDate"] != null)
                 {
                     string[] date = node["LastDate"].GetAttribute("value").Split("/");
@@ -141,6 +142,10 @@ public static class XMLSerialization
 
         elem = xmlDocument.CreateElement("ActiveCD");
         elem.SetAttribute("value", GLOBALS.player.activeCd.ToString());
+        player.AppendChild(elem);
+
+        elem = xmlDocument.CreateElement("Challenge");
+        elem.SetAttribute("value", GLOBALS.player.challengeDone.ToString());
         player.AppendChild(elem);
 
         elem = xmlDocument.CreateElement("LastDate");
