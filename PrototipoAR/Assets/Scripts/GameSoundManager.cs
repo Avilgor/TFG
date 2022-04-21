@@ -10,7 +10,7 @@ public class GameSoundManager : MonoBehaviour
     [SerializeField]
     AudioClip btnClick,cronoFX,numberCorrect,numberWrong,variatinoGold,variationCrazy,variationHole,variationLockHit,variationLockBreak,timeOut;
 
-    private void Awake()
+    void Awake()
     {
         GLOBALS.gameSoundManager = this;
     }
@@ -45,27 +45,27 @@ public class GameSoundManager : MonoBehaviour
         if (GLOBALS.soundOn) source.PlayOneShot(numberWrong);
     }
 
-    public void PlayVaritationGold()
+    public void PlayVariationGold()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(variatinoGold);
     }
 
-    public void PlayVaritationCrazy()
+    public void PlayVariationCrazy()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(variationCrazy);
     }
 
-    public void PlayVaritationHole()
+    public void PlayVariationHole()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(variationHole);
     }
 
-    public void PlayVaritationLockHit()
+    public void PlayVariationLockHit()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(variationLockHit);
     }
 
-    public void PlayVaritationLockBreak()
+    public void PlayVariationLockBreak()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(variationLockBreak);
     }

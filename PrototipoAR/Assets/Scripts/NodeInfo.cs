@@ -67,7 +67,7 @@ public class NodeInfo
 
     private void GenerateTime()
     {
-        time = 0;
+        time = 10;
         for (int i = 0;i < operations.Count;i++)
         {
             time += operations[i].GetOperationTime();
@@ -79,10 +79,10 @@ public class NodeInfo
                 time *= 3;
                 break;
             case Difficulty.DFF_EASY2:
-                time *= 2;
+                time *= 2.5f;
                 break;
             case Difficulty.DFF_MED:
-                time *= 1.5f;
+                time *= 2.0f;
                 break;
             case Difficulty.DFF_HARD:
                 time *= 1.5f;

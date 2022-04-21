@@ -1,42 +1,54 @@
 {
     "m_SelectedDeviceId": "19ae5649",
     "m_SelectedPackage": {
-        "deviceId": "19ae5649",
-        "name": "com.DefaultCompany.PrototipoAR",
-        "processId": 6738,
-        "exited": true
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "19ae5649",
+            "name": "com.miui.home",
+            "processId": 6300,
+            "exited": false
+        },
+        {
+            "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 19407,
+            "processId": 15038,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 20020,
+            "processId": 15283,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 22327,
+            "processId": 22646,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 25534,
+            "processId": 24078,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 6738,
+            "processId": 24874,
             "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.miui.android.fashiongallery",
+            "processId": 26059,
+            "exited": false
         }
     ],
     "m_Tags": {

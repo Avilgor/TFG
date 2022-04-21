@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 33718669}
   - component: {fileID: 33718668}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: HoleImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &33718667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   markerManager: {fileID: 1664663330}
-  gameOptions: {fileID: 0}
+  gameOptions: {fileID: 49095762}
   panel: {fileID: 933295848}
   text: {fileID: 1833187128}
   timerTxt: {fileID: 892588156}
@@ -626,7 +626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &219278171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -817,6 +817,8 @@ MonoBehaviour:
   text: {fileID: 38172553}
   holeSprite: {fileID: 912545009}
   lockSprite: {fileID: 1179607252}
+  holeGo: {fileID: 912545007}
+  lockGo: {fileID: 1179607249}
   number: 0
 --- !u!1 &278471668
 GameObject:
@@ -830,12 +832,12 @@ GameObject:
   - component: {fileID: 278471670}
   - component: {fileID: 278471669}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: holeImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &278471669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +972,8 @@ MonoBehaviour:
   text: {fileID: 752136349}
   holeSprite: {fileID: 545038269}
   lockSprite: {fileID: 1280700033}
+  holeGo: {fileID: 545038267}
+  lockGo: {fileID: 1280700030}
   number: 0
 --- !u!1 &386802056
 GameObject:
@@ -1559,8 +1563,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 69, y: -65}
-  m_SizeDelta: {x: 82.6285, y: 81.4522}
+  m_AnchoredPosition: {x: 78.6607, y: -74.489}
+  m_SizeDelta: {x: 101.9499, y: 100.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503729964
 MonoBehaviour:
@@ -1879,12 +1883,12 @@ GameObject:
   - component: {fileID: 545038270}
   - component: {fileID: 545038269}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: HoleImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &545038268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1961,7 +1965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &546054456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2417,6 +2421,8 @@ MonoBehaviour:
   text: {fileID: 1527863279}
   holeSprite: {fileID: 758626494}
   lockSprite: {fileID: 789406189}
+  holeGo: {fileID: 758626492}
+  lockGo: {fileID: 789406186}
   number: 0
 --- !u!1 &650049005
 GameObject:
@@ -2571,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &722712189
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2834,12 +2840,12 @@ GameObject:
   - component: {fileID: 758626495}
   - component: {fileID: 758626494}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: HoleImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &758626493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3049,7 +3055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &789406187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3549,12 +3555,12 @@ GameObject:
   - component: {fileID: 912545010}
   - component: {fileID: 912545009}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: HoleImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &912545008
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4426,7 +4432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1179607250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4649,6 +4655,8 @@ MonoBehaviour:
   text: {fileID: 1844718366}
   holeSprite: {fileID: 278471669}
   lockSprite: {fileID: 219278173}
+  holeGo: {fileID: 278471668}
+  lockGo: {fileID: 219278170}
   number: 0
 --- !u!1 &1242115175
 GameObject:
@@ -4735,7 +4743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1280700031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5597,6 +5605,8 @@ MonoBehaviour:
   text: {fileID: 915116837}
   holeSprite: {fileID: 33718668}
   lockSprite: {fileID: 546054458}
+  holeGo: {fileID: 33718666}
+  lockGo: {fileID: 546054455}
   number: 0
 --- !u!1 &1809030090
 GameObject:
@@ -6430,12 +6440,12 @@ GameObject:
   - component: {fileID: 2032375275}
   - component: {fileID: 2032375274}
   m_Layer: 3
-  m_Name: AlterImage
+  m_Name: HoleImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2032375273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6727,6 +6737,7 @@ GameObject:
   - component: {fileID: 2088249220}
   - component: {fileID: 2088249219}
   - component: {fileID: 2088249223}
+  - component: {fileID: 2088249224}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: Untagged
@@ -6937,6 +6948,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &2088249224
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088249217}
+  m_Enabled: 1
 --- !u!1 &2108374780
 GameObject:
   m_ObjectHideFlags: 0
@@ -7195,4 +7214,6 @@ MonoBehaviour:
   text: {fileID: 1666336578}
   holeSprite: {fileID: 2032375274}
   lockSprite: {fileID: 722712191}
+  holeGo: {fileID: 2032375272}
+  lockGo: {fileID: 722712188}
   number: 0

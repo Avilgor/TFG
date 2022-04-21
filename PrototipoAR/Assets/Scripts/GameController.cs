@@ -57,23 +57,34 @@ public class GameController : MonoBehaviour
         {
             challengeNode = new ChallengeNode(Difficulty.DFF_MED,Difficulty.DFF_MED,Difficulty.DFF_HARD);
             totalOperations = 3;
+            GenerateNew(challengeNode.operations[operationIndex].operators,challengeNode.difficulties[operationIndex]);
+            timer = challengeNode.time;
         }
         timerTxt.text = ((int)timer).ToString();
     }
 
+    private void OnDestroy()
+    {
+        GLOBALS.gameController = null;
+        operationGenerator = null;
+    }
+
     private void Update()
     {
-        if (timer > 0 && !results)
+        if (!results)
         {
-            timer -= Time.deltaTime;
-            timerTxt.text = ((int)timer).ToString();
-        }
-        else if(!results)
-        {
-            timerTxt.text = "0";
-            GLOBALS.gameSoundManager.PlayTimeOutFX();
-            ProcessResults();
-            results = true;
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                timerTxt.text = ((int)timer).ToString();
+            }
+            else
+            {
+                timerTxt.text = "0";
+                GLOBALS.gameSoundManager.PlayTimeOutFX();
+                ProcessResults();
+                results = true;
+            }
         }
     }
 
@@ -81,8 +92,8 @@ public class GameController : MonoBehaviour
     {
         List<int> numList = new List<int>();
         currentNodeDifficulty = diff;
-        operationGenerator.Generate(list, diff);
-        text.text = operationGenerator.currentOperation + "= ?";
+        operationGenerator.Generate(new List<OperatorType>(list), diff);
+        text.text = operationGenerator.currentOperation + " = ?";
         numList.Add(operationGenerator.currentSolution);
 
         int aux,sol = operationGenerator.currentSolution;
@@ -98,7 +109,8 @@ public class GameController : MonoBehaviour
             Debug.Log("Number: "+numList[i]);
         }
         markerManager.SetMarkers(numList);
-        AlterCube();
+        //Change to only adventure
+        if(GLOBALS.currentGameMode == GameMode.MODE_CHALLENGE) AlterCube();
     }
 
     public bool CheckNumber(int num)
@@ -128,28 +140,30 @@ public class GameController : MonoBehaviour
 
     private void AlterCube()
     {
-        int roll = Random.Range(1,101);
+        //TESTING//
+        /*int roll = Random.Range(1,101);
 
         if (roll <= 5)
         {
-            string aux = text.text;
+            //Works
             currentAlteration = GameAlteration.ALT_GOLD;
-            text.text = "<color=#" + ColorUtility.ToHtmlStringRGB(goldAlterColor) + ">" + aux + "</color>";
+            text.color = goldAlterColor;          
             gameOptions.ToogleCalculatorButton(true);
             markerManager.AlterCube(currentAlteration);
-            GLOBALS.gameSoundManager.PlayVaritationGold();
-        }
+            GLOBALS.gameSoundManager.PlayVariationGold();*/
+        /*}
         else if (roll <= 10)
         {
+            text.color = defaultColor;
             roll = Random.Range(0, 3);
             switch (roll)
             {
-                case 0:
+                case 0:*/
                     currentAlteration = GameAlteration.ALT_CUBEHOLED;
                     markerManager.AlterCube(currentAlteration);
                     gameOptions.ToogleCalculatorButton(false);
-                    GLOBALS.gameSoundManager.PlayVaritationHole();
-                    break;
+                    GLOBALS.gameSoundManager.PlayVariationHole();
+                   /*break;
                 case 1:
                     currentAlteration = GameAlteration.ALT_CUBETRAP;
                     markerManager.AlterCube(currentAlteration);
@@ -164,12 +178,11 @@ public class GameController : MonoBehaviour
         }
         else
         {            
-            string aux = text.text;
-            text.text = "<color=#" + ColorUtility.ToHtmlStringRGB(defaultColor) + ">" + aux + "</color>";
+            text.color = defaultColor;
             currentAlteration = GameAlteration.ALT_NONE;
             gameOptions.ToogleCalculatorButton(true);
             markerManager.AlterCube(currentAlteration);
-        }
+        }*/
     }
 
     public int GetOperationResult()
@@ -197,37 +210,37 @@ public class GameController : MonoBehaviour
 
     private void ProcessResults()
     {
+        results = true;
         markerManager.EndMarkers();
         int totalStars = 0;
         if (GLOBALS.currentGameMode == GameMode.MODE_ADVENTURE)
         {
             if (GLOBALS.replayMission)
             {
-                if (GLOBALS.infoNodes[GLOBALS.currentNode].starCompleted)
-                {
-                    totalStars++;
-                }
+                totalStars++;
+
+                if (GLOBALS.infoNodes[GLOBALS.currentNode].starTime) totalStars++;
                 else
                 {
-                    
+                    if (timer > (GLOBALS.infoNodes[GLOBALS.currentNode].time / 2))
+                    {
+                        GLOBALS.infoNodes[GLOBALS.currentNode].starTime = true;
+                        GLOBALS.player.stars += 1;
+                        totalStars++;
+                    }
+                    else GLOBALS.infoNodes[GLOBALS.currentNode].starTime = false;
                 }
 
-                if (GLOBALS.infoNodes[GLOBALS.currentNode].starTime)
-                {
-                    totalStars++;
-                }
+                if (GLOBALS.infoNodes[GLOBALS.currentNode].starError) totalStars++;               
                 else
                 {
-
-                }
-
-                if (GLOBALS.infoNodes[GLOBALS.currentNode].starError)
-                {
-                    totalStars++;
-                }
-                else
-                {
-
+                    if (failed) GLOBALS.infoNodes[GLOBALS.currentNode].starError = false;
+                    else
+                    {
+                        GLOBALS.infoNodes[GLOBALS.currentNode].starError = true;
+                        GLOBALS.player.stars += 1;
+                        totalStars++;
+                    }
                 }
             }
             else
@@ -304,7 +317,7 @@ public class GameController : MonoBehaviour
             }
             else ShowResultsChallenge(false, false, false);
         }
-        XMLSerialization.SaveXMLData();
+        GLOBALS.SaveGame();
     }
 
     public void PowerUpCalculator()
@@ -312,7 +325,7 @@ public class GameController : MonoBehaviour
         if (currentAlteration != GameAlteration.ALT_CUBEHOLED)
         {
             markerManager.AlterCube(GameAlteration.ALT_CUBEHOLED);
-            XMLSerialization.SaveXMLData();
+            GLOBALS.SaveGame();
             GLOBALS.gameSoundManager.PlayCalculatorFX();
         }
     }
@@ -320,13 +333,15 @@ public class GameController : MonoBehaviour
     public void PowerUpCrono()
     {
         timer += 30;
-        XMLSerialization.SaveXMLData();
+        GLOBALS.SaveGame();
         GLOBALS.gameSoundManager.PlayCronoFX();
     }
 
     IEnumerator NextOperation()
     {
-        yield return new WaitForSeconds(1);
+        float duration = 1.0f;
+        StartCoroutine(OperationChangeFX(duration));
+        yield return new WaitForSeconds(duration);
         if (totalOperations <= 0) ProcessResults();
         else
         {
@@ -339,5 +354,51 @@ public class GameController : MonoBehaviour
                 GenerateNew(challengeNode.operations[operationIndex].operators,challengeNode.difficulties[operationIndex]);
             }
         }
+    }
+
+    IEnumerator OperationChangeFX(float duration)
+    {
+        float timer = 0;
+        do
+        {
+            yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime;
+            string txt = "";
+            txt += Random.Range(0, 50).ToString();
+            switch (Random.Range(0, 4))
+            {
+                case 0:
+                    txt += " + ";
+                    break;
+                case 1:
+                    txt += " - ";
+                    break;
+                case 2:
+                    txt += " * ";
+                    break;
+                case 3:
+                    txt += " / ";
+                    break;
+            }
+            txt += Random.Range(0, 50).ToString();
+            switch (Random.Range(0, 4))
+            {
+                case 0:
+                    txt += " + ";
+                    break;
+                case 1:
+                    txt += " - ";
+                    break;
+                case 2:
+                    txt += " * ";
+                    break;
+                case 3:
+                    txt += " / ";
+                    break;
+            }
+            txt += Random.Range(0, 50).ToString();
+            txt += " = ?";
+            text.text = txt;
+        } while (timer < duration);
     }
 }

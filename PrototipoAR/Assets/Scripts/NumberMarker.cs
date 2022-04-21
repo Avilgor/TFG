@@ -11,6 +11,9 @@ public class NumberMarker : MonoBehaviour
     [SerializeField]
     Image holeSprite,lockSprite;
 
+    [SerializeField]
+    GameObject holeGo, lockGo;
+
     SelectableMarker selectable;
     public int number;
     bool faceClosed;
@@ -21,17 +24,23 @@ public class NumberMarker : MonoBehaviour
         selectable = GetComponent<SelectableMarker>();
     }
 
-    private void Start()
+    public void StartMarker()
     {
         lockBreaks = 0;
         faceClosed = false;
-        holeSprite.gameObject.SetActive(false);
-        lockSprite.gameObject.SetActive(false);
+        /*holeGo.SetActive(false);
+        Debug.Log("Hole off");
+        lockGo.SetActive(false);
+        Debug.Log("Lock off");*/
     }
 
     public void SetNumber(int num)
     {
         number = num;
+        holeGo.SetActive(false);
+        Debug.Log("Hole off");
+        lockGo.SetActive(false);
+        Debug.Log("Lock off");
         text.text = num.ToString();
         selectable.SetSelectable(true);
         text.enabled = true;
@@ -57,8 +66,9 @@ public class NumberMarker : MonoBehaviour
 
     public void HoledFace(Sprite sp)
     {
-        holeSprite.sprite = sp;
-        holeSprite.gameObject.SetActive(true);
+        holeGo.SetActive(true);
+        Debug.Log("Hole on");
+        holeSprite.sprite = sp;      
         text.enabled = false;
         selectable.SetSelectable(false);
         faceClosed = true;
@@ -70,7 +80,8 @@ public class NumberMarker : MonoBehaviour
         lockSteps = steps;
         lockBreaks = taps;
         lockSprite.sprite = sp;
-        lockSprite.gameObject.SetActive(true);
+        lockGo.SetActive(true);
+        Debug.Log("Lock on");
         text.enabled = false;
         selectable.SetSelectable(false);
         faceClosed = true;
@@ -78,8 +89,10 @@ public class NumberMarker : MonoBehaviour
 
     public void DisableAlterations()
     {
-        lockSprite.gameObject.SetActive(false);
-        holeSprite.gameObject.SetActive(false);
+        holeGo.SetActive(false);
+        Debug.Log("Hole off");
+        lockGo.SetActive(false);
+        Debug.Log("Lock off");
     }
 
     public void ToggleSelectable(bool value)
@@ -105,14 +118,15 @@ public class NumberMarker : MonoBehaviour
             faceClosed = false;
             selectable.SetSelectable(true);
             text.enabled = true;
-            lockSprite.gameObject.SetActive(false);
-            GLOBALS.gameSoundManager.PlayVaritationLockBreak();
+            lockGo.SetActive(false);
+            Debug.Log("Lock off");
+            GLOBALS.gameSoundManager.PlayVariationLockBreak();
         }
         else if ((lockBreaks % lockSteps) == 0)
         {
             lockIndex++;
             lockSprite.sprite = GLOBALS.gameMarkerManager.GetLockSprite(lockIndex);
-            GLOBALS.gameSoundManager.PlayVaritationLockHit();
+            GLOBALS.gameSoundManager.PlayVariationLockHit();
         }
     }
 }

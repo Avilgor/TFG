@@ -12,10 +12,10 @@ public enum OperatorType
 
 public enum Difficulty
 {
-    DFF_EASY = 0, //All 1 digit
-    DFF_EASY2 = 1, //From 1 to 20
-    DFF_MED = 2, //From 1 to 50
-    DFF_HARD = 3//All 2 digits up to 99
+    DFF_EASY = 0, //From 1 to 9
+    DFF_EASY2 = 1, //From 5 to 20
+    DFF_MED = 2, //From 10 to 30
+    DFF_HARD = 3//From 20 to 50
 }
 
 public class OperationGenerator
@@ -33,12 +33,11 @@ public class OperationGenerator
     {
         string txt = "";
         List<int> numbers = new List<int>();
-
+        int aux;
         switch (diff)
         {
             case Difficulty.DFF_EASY:
                 Debug.Log("Difficulty easy");
-                int aux;
                 for (int i = 0;i < list.Count;i++)
                 {
                     aux = GetNumber(list[i], Difficulty.DFF_EASY);
@@ -53,47 +52,44 @@ public class OperationGenerator
 
             case Difficulty.DFF_EASY2:
                 Debug.Log("Difficulty easy2");
-                int aux2;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux2 = GetNumber(list[i], Difficulty.DFF_EASY2);
-                    txt += aux2.ToString() + " ";
+                    aux = GetNumber(list[i], Difficulty.DFF_EASY2);
+                    txt += aux.ToString() + " ";
                     txt += GetOperatorString(list[i]) + " ";
-                    numbers.Add(aux2);
+                    numbers.Add(aux);
                 }
-                aux2 = GetNumber(list[list.Count - 1], Difficulty.DFF_EASY2);
-                txt += aux2.ToString();
-                numbers.Add(aux2);
+                aux = GetNumber(list[list.Count - 1], Difficulty.DFF_EASY2);
+                txt += aux.ToString();
+                numbers.Add(aux);
                 break;
 
             case Difficulty.DFF_MED:
                 Debug.Log("Difficulty medium");
-                int aux3;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux3 = GetNumber(list[i], Difficulty.DFF_MED);
-                    txt += aux3.ToString() + " ";
-                    txt += list[i] + " ";
-                    numbers.Add(aux3);
+                    aux = GetNumber(list[i], Difficulty.DFF_MED);
+                    txt += aux.ToString() + " ";
+                    txt += GetOperatorString(list[i]) + " ";
+                    numbers.Add(aux);
                 }
-                aux3 = GetNumber(list[list.Count-1], Difficulty.DFF_MED);
-                txt += aux3.ToString();
-                numbers.Add(aux3);
+                aux = GetNumber(list[list.Count-1], Difficulty.DFF_MED);
+                txt += aux.ToString();
+                numbers.Add(aux);
                 break;
 
             case Difficulty.DFF_HARD:
                 Debug.Log("Difficulty hard");
-                int aux4;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    aux4 = GetNumber(list[i], Difficulty.DFF_HARD);
-                    txt += aux4.ToString() + " ";
+                    aux = GetNumber(list[i], Difficulty.DFF_HARD);
+                    txt += aux.ToString() + " ";
                     txt += GetOperatorString(list[i]) + " "; 
-                    numbers.Add(aux4);
+                    numbers.Add(aux);
                 }
-                aux4 = GetNumber(list[list.Count - 1], Difficulty.DFF_HARD);
-                txt += aux4.ToString();
-                numbers.Add(aux4);
+                aux = GetNumber(list[list.Count - 1], Difficulty.DFF_HARD);
+                txt += aux.ToString();
+                numbers.Add(aux);
                 break;
 
             default:
@@ -144,9 +140,9 @@ public class OperationGenerator
                 switch (type)
                 {
                     case OperatorType.OP_SUM:
-                        return Random.Range(1, 21);
+                        return Random.Range(5, 21);
                     case OperatorType.OP_SUB:
-                        return Random.Range(1, 21);
+                        return Random.Range(5, 21);
                     case OperatorType.OP_MUL:
                         return Random.Range(1, 3);
                     case OperatorType.OP_DIV:
@@ -158,9 +154,9 @@ public class OperationGenerator
                 switch (type)
                 {
                     case OperatorType.OP_SUM:
-                        return Random.Range(1, 51);
+                        return Random.Range(10, 31);
                     case OperatorType.OP_SUB:
-                        return Random.Range(1, 51);
+                        return Random.Range(10, 31);
                     case OperatorType.OP_MUL:
                         return Random.Range(1, 4);
                     case OperatorType.OP_DIV:
@@ -172,9 +168,9 @@ public class OperationGenerator
                 switch (type)
                 {
                     case OperatorType.OP_SUM:
-                        return Random.Range(1, 100);
+                        return Random.Range(20, 51);
                     case OperatorType.OP_SUB:
-                        return Random.Range(1, 100);
+                        return Random.Range(20, 51);
                     case OperatorType.OP_MUL:
                         return Random.Range(1, 4);
                     case OperatorType.OP_DIV:

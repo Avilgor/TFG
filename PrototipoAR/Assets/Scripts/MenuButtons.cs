@@ -11,7 +11,7 @@ public class MenuButtons : MonoBehaviour
     [SerializeField]
     AudioSource source;
     [SerializeField]
-    AudioClip btnClick;
+    AudioClip btnClick,selectionFX;
     [SerializeField]
     Sprite soundOn, soundOff;
     [SerializeField]
@@ -50,17 +50,25 @@ public class MenuButtons : MonoBehaviour
         switch (item)
         {
             case MenuItem.MENU_ADVENTURE:
+                if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
                 SceneManager.LoadScene(1);
                 break;
             case MenuItem.MENU_CHALLENGE:
+                if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
                 GLOBALS.currentGameMode = GameMode.MODE_CHALLENGE;
                 SceneManager.LoadScene(2);
                 break;
             case MenuItem.MENU_SHOP:
+                if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
                 OpenShop();
                 break;
             case MenuItem.MENU_OPTIONS:
+                if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
                 OpenOptions();
+                break;
+            case MenuItem.MENU_TUTORIAL:
+                if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
+
                 break;
             default:
                 Debug.Log("Menu item not identified");
@@ -74,13 +82,15 @@ public class MenuButtons : MonoBehaviour
         optionsScreen.SetActive(true);
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
+        optionsScreen.GetComponent<Animator>().SetTrigger("PopIn");
     }
 
     public void CloseOptions()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         optionsMarker.SetSelectable(true);
-        optionsScreen.SetActive(false);
+        //optionsScreen.SetActive(false);
+        optionsScreen.GetComponent<Animator>().SetTrigger("PopOut");
     }
 
     public void OpenShop()
@@ -90,14 +100,16 @@ public class MenuButtons : MonoBehaviour
         lifePriceTxt.text = GLOBALS.LIFEPRICE.ToString();
         cronoPriceTxt.text = GLOBALS.CRONOPRICE.ToString();
         calculatorPriceTxt.text = GLOBALS.CALCULATORPRICE.ToString();
+        shopScreen.GetComponent<Animator>().SetTrigger("PopIn");
         UpdateShop();
     }
 
     public void CloseShop()
     {
         if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
+        shopScreen.GetComponent<Animator>().SetTrigger("PopOut");
         shopMarker.SetSelectable(true);
-        shopScreen.SetActive(false);
+        //shopScreen.SetActive(false);
     }
 
     private void UpdateShop()
@@ -143,7 +155,7 @@ public class MenuButtons : MonoBehaviour
         GLOBALS.soundOn = !GLOBALS.soundOn;
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
-        XMLSerialization.SaveXMLData();
+        GLOBALS.SaveGame();
     }
 
     public void QuitGame()
@@ -172,6 +184,11 @@ public class MenuButtons : MonoBehaviour
         Debug.Log("Media save result: " + res + " " + path);
         if (res) ShowAndroidToast("Cube img saved to your galley.");       
         else ShowAndroidToast("Could not save image.");
+    }
+
+    public void ResetSave()
+    {
+        GLOBALS.ResetSaveFile();
     }
 
     private void ShowAndroidToast(string msg)

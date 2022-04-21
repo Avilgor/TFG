@@ -49,6 +49,14 @@ public static class GLOBALS
         }
     }
 
+    public static void ResetSaveFile()
+    {
+        soundOn = true;
+        player = new PlayerData();
+        LoadDefaultNodeData();
+        SaveGame();
+    }
+
     public static void SaveGame()
     {
         player.LifeCD();

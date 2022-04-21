@@ -18,7 +18,11 @@ public class GameMarkerManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < markers.Count; i++) markersGo.Add(markers[i].gameObject);
+        for (int i = 0; i < markers.Count; i++)
+        {
+            markersGo.Add(markers[i].gameObject);
+            markers[i].StartMarker();
+        }
     }
 
     public void SetMarkers(List<int> list)
@@ -83,7 +87,7 @@ public class GameMarkerManager : MonoBehaviour
                 int sol = GLOBALS.gameController.GetOperationResult();
                 do
                 {
-                    aux = Random.Range(0,markers.Count);
+                    aux = Random.Range(0, markers.Count);
                     if (markers[aux].number != sol && markers[aux].IsOpen())
                     {
                         markers[aux].HoledFace(cubeHole);
@@ -101,10 +105,10 @@ public class GameMarkerManager : MonoBehaviour
                 switch (GLOBALS.gameController.GetNodeDifficulty())
                 {
                     case Difficulty.DFF_EASY:
-                        for (int i = 0;i<2;i++)
+                        for (int i = 0; i < 2; i++)
                         {
-                            aux = Random.Range(0,toSet.Count);
-                            toSet[aux].LockFace(cubeLock1,5,1);
+                            aux = Random.Range(0, toSet.Count);
+                            toSet[aux].LockFace(cubeLock1, 5, 1);
                             toSet.RemoveAt(aux);
                         }
                         break;
@@ -112,7 +116,7 @@ public class GameMarkerManager : MonoBehaviour
                         for (int i = 0; i < 3; i++)
                         {
                             aux = Random.Range(0, toSet.Count);
-                            toSet[aux].LockFace(cubeLock1, 10,2);
+                            toSet[aux].LockFace(cubeLock1, 10, 2);
                             toSet.RemoveAt(aux);
                         }
                         break;
@@ -120,7 +124,7 @@ public class GameMarkerManager : MonoBehaviour
                         for (int i = 0; i < 4; i++)
                         {
                             aux = Random.Range(0, toSet.Count);
-                            toSet[aux].LockFace(cubeLock1, 15,3);
+                            toSet[aux].LockFace(cubeLock1, 15, 3);
                             toSet.RemoveAt(aux);
                         }
                         break;
@@ -128,7 +132,7 @@ public class GameMarkerManager : MonoBehaviour
                         for (int i = 0; i < 4; i++)
                         {
                             aux = Random.Range(0, toSet.Count);
-                            toSet[aux].LockFace(cubeLock1, 20,4);
+                            toSet[aux].LockFace(cubeLock1, 20, 4);
                             toSet.RemoveAt(aux);
                         }
                         break;
@@ -145,7 +149,7 @@ public class GameMarkerManager : MonoBehaviour
                 }
                 break;
             default:
-                Debug.Log("Cube alteration "+alter+" not found.");
+                Debug.Log("Cube alteration " + alter + " not found.");
                 break;
         }
     }
@@ -208,7 +212,7 @@ public class GameMarkerManager : MonoBehaviour
                 openList[i].SetNumber(numberList[i]);
             }
         }
-        GLOBALS.gameSoundManager.PlayVaritationCrazy();
+        GLOBALS.gameSoundManager.PlayVariationCrazy();
         if (GLOBALS.gameController.currentAlteration == GameAlteration.ALT_CUBECRAZY) StartCoroutine(CrazyCube());
     }
 }

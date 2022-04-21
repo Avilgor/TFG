@@ -6,6 +6,7 @@ public class ChallengeNode
 {
     public List<NodeOperations> operations;
     public List<Difficulty> difficulties;
+    public float time;
 
     public ChallengeNode(Difficulty diff1, Difficulty diff2, Difficulty diff3)
     {
@@ -17,42 +18,60 @@ public class ChallengeNode
         Generate(diff1);
         Generate(diff2);
         Generate(diff3);
+        GenerateTime();
     }
 
     private void Generate(Difficulty diff)
     {
         List<OperatorType> operators = new List<OperatorType>();
         NodeOperations node;
-
+        int rand;
         switch (diff)
         {
             case Difficulty.DFF_EASY:
-                operators.Add((OperatorType)Random.Range(0, 4));
+                rand = Random.Range(0,4);
+                operators.Add((OperatorType)rand);
                 break;
 
             case Difficulty.DFF_EASY2:
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
+                rand = Random.Range(0, 4);
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);
+                operators.Add((OperatorType)rand);
                 break;
 
             case Difficulty.DFF_MED:
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
+                rand = Random.Range(0, 4);
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);  
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);  
+                operators.Add((OperatorType)rand);
                 break;
 
             case Difficulty.DFF_HARD:
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
-                operators.Add((OperatorType)Random.Range(0, 4));
+                rand = Random.Range(0, 4);
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);  
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);  
+                operators.Add((OperatorType)rand);
+                rand = Random.Range(0, 4);  
+                operators.Add((OperatorType)rand);
                 break;
 
             default:
-                operators.Add((OperatorType)Random.Range(0, 4));
+                Debug.LogError("Challenge difficulty not found");
                 break;
         }
+
         node = new NodeOperations(operators);
         operations.Add(node);
+    }
+
+    private void GenerateTime()
+    {
+        time = 10;
+        time += (operations[0].GetOperationTime() * 2.5f) + (operations[1].GetOperationTime() * 2.0f) + (operations[2].GetOperationTime() * 1.5f);         
     }
 }
