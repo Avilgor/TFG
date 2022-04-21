@@ -8,6 +8,11 @@ using TMPro;
 public class MissionPanel : MonoBehaviour
 {
     [SerializeField]
+    AudioSource source;
+    [SerializeField]
+    AudioClip btnClick,panelUp;
+
+    [SerializeField]
     AdventureModeManager manager;
     [SerializeField]
     Color starFill, starEmpty;
@@ -24,6 +29,11 @@ public class MissionPanel : MonoBehaviour
     private void Awake()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        if (GLOBALS.soundOn) source.PlayOneShot(panelUp);
     }
 
     public void SetUpMissionPanel(int level,bool star_1, bool star_2, bool star_3, MissionState state)
@@ -50,20 +60,33 @@ public class MissionPanel : MonoBehaviour
         }
     }
 
-    public void SetUpEndPanel(int level, bool star_1, bool star_2, bool star_3)
+    public void SetUpEndPanel(int level, int stars)
     {
         currentLevel = level;
         levelTxt.text = "Level " + level.ToString();
-        if (star_1) star1.color = starFill;
-        else star1.color = starEmpty;
-
-        if (star_2) star2.color = starFill;
-        else star2.color = starEmpty;
-
-        if (star_3) star3.color = starFill;
-        else star3.color = starEmpty;
-
-
+        switch (stars)
+        {
+            case 1:
+                star1.color = starFill;
+                star2.color = starEmpty;
+                star3.color = starEmpty;
+                break;
+            case 2:
+                star1.color = starFill;
+                star2.color = starFill;
+                star3.color = starEmpty;
+                break;
+            case 3:
+                star1.color = starFill;
+                star2.color = starFill;
+                star3.color = starFill;
+                break;
+            default:
+                star1.color = starEmpty;
+                star2.color = starEmpty;
+                star3.color = starEmpty;
+                break;
+        }
     }
 
     public void SetUpDailyChallengePanel(bool star_1, bool star_2, bool star_3)
@@ -76,12 +99,12 @@ public class MissionPanel : MonoBehaviour
         else star2.color = starEmpty;
 
         if (star_3) star3.color = starFill;
-        else star3.color = starEmpty;
-      
+        else star3.color = starEmpty;      
     }
 
     public void ClosePanel()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         gameObject.SetActive(false);
     }
 

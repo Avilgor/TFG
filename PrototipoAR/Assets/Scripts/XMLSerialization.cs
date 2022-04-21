@@ -69,9 +69,9 @@ public static class XMLSerialization
                     {
                         GLOBALS.infoNodes[adNode.Key].UpdateNode(
                             (MissionState)int.Parse(node["State"].GetAttribute("value")),
-                            bool.Parse(node["Star1"].GetAttribute("value")),
-                            bool.Parse(node["Star2"].GetAttribute("value")),
-                            bool.Parse(node["Star3"].GetAttribute("value")));
+                            bool.Parse(node["StarComplete"].GetAttribute("value")),
+                            bool.Parse(node["StarTime"].GetAttribute("value")),
+                            bool.Parse(node["StarError"].GetAttribute("value")));
                         levelNode = null;
                     }                   
                 }                
@@ -170,16 +170,16 @@ public static class XMLSerialization
             aux.SetAttribute("value", ((int)node.Value.state).ToString());
             adNode.AppendChild(aux);
 
-            aux = xmlDocument.CreateElement("Star1");
-            aux.SetAttribute("value", node.Value.star1.ToString());
+            aux = xmlDocument.CreateElement("StarComplete");
+            aux.SetAttribute("value", node.Value.starCompleted.ToString());
             adNode.AppendChild(aux);
 
-            aux = xmlDocument.CreateElement("Star2");
-            aux.SetAttribute("value", node.Value.star2.ToString());
+            aux = xmlDocument.CreateElement("StarTime");
+            aux.SetAttribute("value", node.Value.starTime.ToString());
             adNode.AppendChild(aux);
 
-            aux = xmlDocument.CreateElement("Star3");
-            aux.SetAttribute("value", node.Value.star3.ToString());
+            aux = xmlDocument.CreateElement("StarError");
+            aux.SetAttribute("value", node.Value.starError.ToString());
             adNode.AppendChild(aux);
 
             adventure.AppendChild(adNode);

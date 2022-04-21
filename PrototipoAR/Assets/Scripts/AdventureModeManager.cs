@@ -8,6 +8,11 @@ using TMPro;
 public class AdventureModeManager : MonoBehaviour
 {
     [SerializeField]
+    AudioSource source;
+    [SerializeField]
+    AudioClip btnClick,startMission;
+
+    [SerializeField]
     Sprite SPcurrentMision, SPlockedMission, SPcompletedMission;
 
     [SerializeField]
@@ -18,11 +23,6 @@ public class AdventureModeManager : MonoBehaviour
 
     float lifeCd;
     bool lifeRecovery;
-
-    /*private void Awake()
-    {
-        GLOBALS.LoadDefaultNodeData();       
-    }*/
 
     void Start()
     {
@@ -69,13 +69,14 @@ public class AdventureModeManager : MonoBehaviour
         {
             if (GLOBALS.infoNodes.ContainsKey(i+1))
             {
-                nodes[i].SetNode(i+1,GLOBALS.infoNodes[i+1].state, GLOBALS.infoNodes[i+1].star1, GLOBALS.infoNodes[i+1].star2, GLOBALS.infoNodes[i+1].star3);
+                nodes[i].SetNode(i+1,GLOBALS.infoNodes[i+1].state, GLOBALS.infoNodes[i+1].starCompleted, GLOBALS.infoNodes[i+1].starTime, GLOBALS.infoNodes[i+1].starError);
             }
         }
     }
 
     public void BackToMainManu()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         SceneManager.LoadScene(0);
     }
 
@@ -83,6 +84,10 @@ public class AdventureModeManager : MonoBehaviour
     {
         if (GLOBALS.player.lifes > 0)
         {
+            if (GLOBALS.soundOn) source.PlayOneShot(startMission);
+            if (GLOBALS.infoNodes[level].state == MissionState.MISSION_COMPLETED) GLOBALS.replayMission = true;
+            else GLOBALS.replayMission = false;
+
             GLOBALS.player.UpdateLife(-1);
             GLOBALS.currentGameMode = GameMode.MODE_ADVENTURE;
             GLOBALS.currentNode = level;

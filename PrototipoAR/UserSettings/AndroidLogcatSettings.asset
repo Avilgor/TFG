@@ -3,23 +3,11 @@
     "m_SelectedPackage": {
         "deviceId": "19ae5649",
         "name": "com.DefaultCompany.PrototipoAR",
-        "processId": 25534,
-        "exited": false
+        "processId": 6738,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 14821,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 12969,
-            "exited": true
-        },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
@@ -42,7 +30,13 @@
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
             "processId": 25534,
-            "exited": false
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 6738,
+            "exited": true
         }
     ],
     "m_Tags": {

@@ -18,9 +18,11 @@ public static class GLOBALS
     public static GameController gameController = null;
     public static GameMarkerManager gameMarkerManager = null;
     public static PlayerData player = null;
+    public static GameSoundManager gameSoundManager = null;
 
     public static bool soundOn;
     public static bool dataLoaded = false;
+    public static bool replayMission = false;
     public static Dictionary<int, NodeInfo> infoNodes = new Dictionary<int, NodeInfo>();
     public static int currentNode = 0;
     public static GameMode currentGameMode = GameMode.MODE_ADVENTURE;
@@ -74,7 +76,7 @@ public static class GLOBALS
     {
         if (!dataLoaded)
         {
-            infoNodes.Add(1, new NodeInfo(1, MissionState.MISSION_COMPLETED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+            infoNodes.Add(1, new NodeInfo(1, MissionState.MISSION_COMPLETED, true, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
                     new NodeOperations(new List<OperatorType>() {
                         OperatorType.OP_SUM})
             }));

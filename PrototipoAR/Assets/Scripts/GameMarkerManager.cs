@@ -208,7 +208,7 @@ public class GameMarkerManager : MonoBehaviour
                 openList[i].SetNumber(numberList[i]);
             }
         }
-       
+        GLOBALS.gameSoundManager.PlayVaritationCrazy();
         if (GLOBALS.gameController.currentAlteration == GameAlteration.ALT_CUBECRAZY) StartCoroutine(CrazyCube());
     }
 }

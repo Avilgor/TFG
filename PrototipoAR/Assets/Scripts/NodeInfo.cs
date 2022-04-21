@@ -40,29 +40,29 @@ public class NodeInfo
 {
     public int level;
     public MissionState state;
-    public bool star1, star2, star3;
+    public bool starCompleted, starError, starTime;
     public Difficulty nodeDifficulty;
     public List<NodeOperations> operations;
     public float time;
 
-    public NodeInfo(int level,MissionState NodeState,bool s1,bool s2,bool s3, Difficulty diff, List<NodeOperations> list)
+    public NodeInfo(int level,MissionState NodeState,bool completed, bool time, bool error, Difficulty diff, List<NodeOperations> list)
     {
         this.level = level;
         state = NodeState;
-        star1 = s1;
-        star2 = s2;
-        star3 = s3;
+        starCompleted = completed;
+        starError = error;
+        starTime = time;
         nodeDifficulty = diff;
         operations = list;
         GenerateTime();
     }
 
-    public void UpdateNode(MissionState NodeState, bool s1, bool s2, bool s3)
+    public void UpdateNode(MissionState NodeState, bool completed, bool time, bool error)
     {
         state = NodeState;
-        star1 = s1;
-        star2 = s2;
-        star3 = s3;
+        starCompleted = completed;
+        starError = error;
+        starTime = time;
     }
 
     private void GenerateTime()

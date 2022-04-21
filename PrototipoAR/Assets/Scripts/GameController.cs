@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
         else if(!results)
         {
             timerTxt.text = "0";
+            GLOBALS.gameSoundManager.PlayTimeOutFX();
             ProcessResults();
             results = true;
         }
@@ -112,6 +113,7 @@ public class GameController : MonoBehaviour
             {
                 GLOBALS.player.stars += 1;
             }
+            GLOBALS.gameSoundManager.PlayNumberCorrect();
             return true;
         }
         else
@@ -119,7 +121,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Incorrect number");
             failed = true;
             if (GLOBALS.currentGameMode == GameMode.MODE_CHALLENGE) ProcessResults();
-
+            GLOBALS.gameSoundManager.PlayNumberWrong();
             return false;
         }
     }
@@ -131,9 +133,11 @@ public class GameController : MonoBehaviour
         if (roll <= 5)
         {
             string aux = text.text;
+            currentAlteration = GameAlteration.ALT_GOLD;
             text.text = "<color=#" + ColorUtility.ToHtmlStringRGB(goldAlterColor) + ">" + aux + "</color>";
             gameOptions.ToogleCalculatorButton(true);
             markerManager.AlterCube(currentAlteration);
+            GLOBALS.gameSoundManager.PlayVaritationGold();
         }
         else if (roll <= 10)
         {
@@ -144,6 +148,7 @@ public class GameController : MonoBehaviour
                     currentAlteration = GameAlteration.ALT_CUBEHOLED;
                     markerManager.AlterCube(currentAlteration);
                     gameOptions.ToogleCalculatorButton(false);
+                    GLOBALS.gameSoundManager.PlayVaritationHole();
                     break;
                 case 1:
                     currentAlteration = GameAlteration.ALT_CUBETRAP;
@@ -177,13 +182,10 @@ public class GameController : MonoBehaviour
         return currentNodeDifficulty;
     }
 
-    private void ShowResultsAdventure()
+    private void ShowResultsAdventure(int stars)
     {
         panel.gameObject.SetActive(true);
-        panel.SetUpEndPanel(GLOBALS.currentNode, 
-            GLOBALS.infoNodes[GLOBALS.currentNode].star1, 
-            GLOBALS.infoNodes[GLOBALS.currentNode].star2, 
-            GLOBALS.infoNodes[GLOBALS.currentNode].star3);
+        panel.SetUpEndPanel(GLOBALS.currentNode, stars);
         LevelRewards.OnLevelEnd(GLOBALS.currentNode);
     }
 
@@ -196,53 +198,91 @@ public class GameController : MonoBehaviour
     private void ProcessResults()
     {
         markerManager.EndMarkers();
+        int totalStars = 0;
         if (GLOBALS.currentGameMode == GameMode.MODE_ADVENTURE)
         {
-            if (timer <= 0)
+            if (GLOBALS.replayMission)
             {
-                GLOBALS.infoNodes[GLOBALS.currentNode].star1 = false;
-                GLOBALS.infoNodes[GLOBALS.currentNode].star2 = false;
-                GLOBALS.infoNodes[GLOBALS.currentNode].star3 = false;
-            }
-            else
-            {
-                GLOBALS.infoNodes[GLOBALS.currentNode].state = MissionState.MISSION_COMPLETED;
-                if (GLOBALS.infoNodes.ContainsKey(GLOBALS.currentNode + 1))
+                if (GLOBALS.infoNodes[GLOBALS.currentNode].starCompleted)
                 {
-                    GLOBALS.infoNodes[GLOBALS.currentNode +1].state = MissionState.MISSION_UNLOCKED;
-                }
-
-                GLOBALS.infoNodes[GLOBALS.currentNode].star1 = true;
-                if (failed)
-                {
-                    GLOBALS.infoNodes[GLOBALS.currentNode].star3 = false;
-                    if (timer > (GLOBALS.infoNodes[GLOBALS.currentNode].time / 2))
-                    {
-                        GLOBALS.infoNodes[GLOBALS.currentNode].star2 = true;
-                        GLOBALS.player.stars += 2;
-                    }
-                    else
-                    { 
-                        GLOBALS.infoNodes[GLOBALS.currentNode].star2 = false;
-                        GLOBALS.player.stars += 1;
-                    }
+                    totalStars++;
                 }
                 else
                 {
-                    GLOBALS.infoNodes[GLOBALS.currentNode].star2 = true;
-                    if (timer > (GLOBALS.infoNodes[GLOBALS.currentNode].time / 2))
+                    
+                }
+
+                if (GLOBALS.infoNodes[GLOBALS.currentNode].starTime)
+                {
+                    totalStars++;
+                }
+                else
+                {
+
+                }
+
+                if (GLOBALS.infoNodes[GLOBALS.currentNode].starError)
+                {
+                    totalStars++;
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                if (timer <= 0)
+                {
+                    GLOBALS.infoNodes[GLOBALS.currentNode].starCompleted = false;
+                    GLOBALS.infoNodes[GLOBALS.currentNode].starTime = false;
+                    GLOBALS.infoNodes[GLOBALS.currentNode].starError = false;
+                }
+                else
+                {
+                    GLOBALS.infoNodes[GLOBALS.currentNode].state = MissionState.MISSION_COMPLETED;
+                    if (GLOBALS.infoNodes.ContainsKey(GLOBALS.currentNode + 1))
                     {
-                        GLOBALS.infoNodes[GLOBALS.currentNode].star3 = true;
-                        GLOBALS.player.stars += 3;
+                        GLOBALS.infoNodes[GLOBALS.currentNode + 1].state = MissionState.MISSION_UNLOCKED;
+                    }
+                    Debug.Log("Remaining time: " + timer.ToString());
+                    Debug.Log("Star time: " + GLOBALS.infoNodes[GLOBALS.currentNode].time / 2);
+                    GLOBALS.infoNodes[GLOBALS.currentNode].starCompleted = true;
+                    if (failed)
+                    {
+                        GLOBALS.infoNodes[GLOBALS.currentNode].starError = false;
+                        if (timer > (GLOBALS.infoNodes[GLOBALS.currentNode].time / 2))
+                        {
+                            GLOBALS.infoNodes[GLOBALS.currentNode].starTime = true;
+                            GLOBALS.player.stars += 2;
+                            totalStars = 2;
+                        }
+                        else
+                        {
+                            GLOBALS.infoNodes[GLOBALS.currentNode].starTime = false;
+                            GLOBALS.player.stars += 1;
+                            totalStars = 1;
+                        }
                     }
                     else
                     {
-                        GLOBALS.infoNodes[GLOBALS.currentNode].star3 = false;
-                        GLOBALS.player.stars += 2;
+                        GLOBALS.infoNodes[GLOBALS.currentNode].starTime = true;
+                        if (timer > (GLOBALS.infoNodes[GLOBALS.currentNode].time / 2))
+                        {
+                            GLOBALS.infoNodes[GLOBALS.currentNode].starError = true;
+                            GLOBALS.player.stars += 3;
+                            totalStars = 3;
+                        }
+                        else
+                        {
+                            GLOBALS.infoNodes[GLOBALS.currentNode].starError = false;
+                            GLOBALS.player.stars += 2;
+                            totalStars = 2;
+                        }
                     }
                 }
             }
-            ShowResultsAdventure();
+            ShowResultsAdventure(totalStars);
         }
         else
         {
@@ -273,6 +313,7 @@ public class GameController : MonoBehaviour
         {
             markerManager.AlterCube(GameAlteration.ALT_CUBEHOLED);
             XMLSerialization.SaveXMLData();
+            GLOBALS.gameSoundManager.PlayCalculatorFX();
         }
     }
 
@@ -280,6 +321,7 @@ public class GameController : MonoBehaviour
     {
         timer += 30;
         XMLSerialization.SaveXMLData();
+        GLOBALS.gameSoundManager.PlayCronoFX();
     }
 
     IEnumerator NextOperation()

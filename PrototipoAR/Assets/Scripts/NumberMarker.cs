@@ -106,11 +106,13 @@ public class NumberMarker : MonoBehaviour
             selectable.SetSelectable(true);
             text.enabled = true;
             lockSprite.gameObject.SetActive(false);
+            GLOBALS.gameSoundManager.PlayVaritationLockBreak();
         }
         else if ((lockBreaks % lockSteps) == 0)
         {
             lockIndex++;
             lockSprite.sprite = GLOBALS.gameMarkerManager.GetLockSprite(lockIndex);
+            GLOBALS.gameSoundManager.PlayVaritationLockHit();
         }
     }
 }

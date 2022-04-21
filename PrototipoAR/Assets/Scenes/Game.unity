@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 49095761}
   - component: {fileID: 49095760}
   - component: {fileID: 49095762}
+  - component: {fileID: 49095763}
   m_Layer: 0
   m_Name: ScriptHandler
   m_TagString: Untagged
@@ -405,6 +406,29 @@ MonoBehaviour:
   cronoTxt: {fileID: 542573084}
   calculatorBtn: {fileID: 1818226366}
   cronoBtn: {fileID: 386802057}
+--- !u!114 &49095763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49095759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e3ec054b3a9ab4fa349028fab5e34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 2088249223}
+  btnClick: {fileID: 8300000, guid: 068f9054dd3a6a842bb633a0e075695c, type: 3}
+  cronoFX: {fileID: 8300000, guid: d69464d81f94def449165639eeb89252, type: 3}
+  numberCorrect: {fileID: 8300000, guid: d6084584731e05745b814022d1cb961e, type: 3}
+  numberWrong: {fileID: 8300000, guid: e844547bae7fbbd479d8f4ff176b1181, type: 3}
+  variatinoGold: {fileID: 8300000, guid: 98ee042987e720a479eda39ca154fb5a, type: 3}
+  variationCrazy: {fileID: 8300000, guid: 7f1fbec3b72feb643b7a11b0e5c311f8, type: 3}
+  variationHole: {fileID: 8300000, guid: 6ba9ae32d01b93a4589e8a602c311804, type: 3}
+  variationLockHit: {fileID: 8300000, guid: 4a6592d12a649a04787d2ea599fdd0e6, type: 3}
+  variationLockBreak: {fileID: 8300000, guid: e4bd45c616ecb394ca5f39d7f6cc51e2, type: 3}
+  timeOut: {fileID: 8300000, guid: ca5fc798e9ecf754ab3023f99d944e24, type: 3}
 --- !u!1 &162189277
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,8 +968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 752136349}
-  holeSprite: {fileID: 0}
-  lockSprite: {fileID: 0}
+  holeSprite: {fileID: 545038269}
+  lockSprite: {fileID: 1280700033}
   number: 0
 --- !u!1 &386802056
 GameObject:
@@ -1391,7 +1415,7 @@ RectTransform:
   m_GameObject: {fileID: 490513821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 994493173}
@@ -1400,7 +1424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 312.05, y: 56}
+  m_AnchoredPosition: {x: 542.05, y: 96}
   m_SizeDelta: {x: 160, y: 51.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490513823
@@ -1535,7 +1559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41.313965, y: -40.726562}
+  m_AnchoredPosition: {x: 69, y: -65}
   m_SizeDelta: {x: 82.6285, y: 81.4522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503729964
@@ -2391,8 +2415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1527863279}
-  holeSprite: {fileID: 0}
-  lockSprite: {fileID: 0}
+  holeSprite: {fileID: 758626494}
+  lockSprite: {fileID: 789406189}
   number: 0
 --- !u!1 &650049005
 GameObject:
@@ -3176,7 +3200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.515625, y: -33.93457}
+  m_AnchoredPosition: {x: -126, y: -74}
   m_SizeDelta: {x: 199.92, y: 103.9969}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822396146
@@ -3366,7 +3390,7 @@ RectTransform:
   m_GameObject: {fileID: 891807860}
   m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809030091}
@@ -3412,8 +3436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -109.17, y: -58.6}
-  m_SizeDelta: {x: 181.5, y: 73.9689}
+  m_AnchoredPosition: {x: -99.96004, y: -51.998}
+  m_SizeDelta: {x: 199.92, y: 104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &892588156
 MonoBehaviour:
@@ -3463,7 +3487,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.9
+  m_fontSize: 63.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3499,7 +3523,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 5, y: 5, z: 5, w: 5}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3777,6 +3801,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be344c354c7cf044a0180664eb08121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  source: {fileID: 2088249223}
+  btnClick: {fileID: 8300000, guid: 068f9054dd3a6a842bb633a0e075695c, type: 3}
+  panelUp: {fileID: 8300000, guid: 57612962d10f8144ba969877319b80bd, type: 3}
   manager: {fileID: 0}
   starFill: {r: 0.9622642, g: 0.8448365, b: 0.30411178, a: 1}
   starEmpty: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
@@ -4338,7 +4365,7 @@ RectTransform:
   m_GameObject: {fileID: 1075025801}
   m_LocalRotation: {x: 0, y: 0, z: -0.258819, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809030091}
@@ -4620,8 +4647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1844718366}
-  holeSprite: {fileID: 0}
-  lockSprite: {fileID: 0}
+  holeSprite: {fileID: 278471669}
+  lockSprite: {fileID: 219278173}
   number: 0
 --- !u!1 &1242115175
 GameObject:
@@ -4888,7 +4915,7 @@ RectTransform:
   m_GameObject: {fileID: 1305455645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809030091}
@@ -4896,7 +4923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.85002136}
+  m_AnchoredPosition: {x: 0, y: -0.8500061}
   m_SizeDelta: {x: 322.298, y: 322.298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1410210151
@@ -5167,8 +5194,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Level 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 704f970d69537d146b265f07b2ddc08d, type: 2}
+  m_sharedMaterial: {fileID: -8603963542570480559, guid: 704f970d69537d146b265f07b2ddc08d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5251,7 +5279,7 @@ RectTransform:
   m_GameObject: {fileID: 1569748805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1809030091}
@@ -5259,8 +5287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -33}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -0.0033951, y: -33}
+  m_SizeDelta: {x: 374.4651, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1642565908
 GameObject:
@@ -5567,8 +5595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 915116837}
-  holeSprite: {fileID: 0}
-  lockSprite: {fileID: 0}
+  holeSprite: {fileID: 33718668}
+  lockSprite: {fileID: 546054458}
   number: 0
 --- !u!1 &1809030090
 GameObject:
@@ -5611,7 +5639,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 624.11, y: 373.624}
+  m_SizeDelta: {x: 1084.1067, y: 649.0013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809030092
 MonoBehaviour:
@@ -6698,6 +6726,7 @@ GameObject:
   - component: {fileID: 2088249221}
   - component: {fileID: 2088249220}
   - component: {fileID: 2088249219}
+  - component: {fileID: 2088249223}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: Untagged
@@ -6812,6 +6841,102 @@ Transform:
   m_Father: {fileID: 1915404467}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2088249223
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088249217}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2108374780
 GameObject:
   m_ObjectHideFlags: 0
@@ -7068,6 +7193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1666336578}
-  holeSprite: {fileID: 0}
-  lockSprite: {fileID: 0}
+  holeSprite: {fileID: 2032375274}
+  lockSprite: {fileID: 722712191}
   number: 0

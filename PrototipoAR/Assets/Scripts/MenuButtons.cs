@@ -9,6 +9,10 @@ public class MenuButtons : MonoBehaviour
 {
     public Texture2D cubeImg;
     [SerializeField]
+    AudioSource source;
+    [SerializeField]
+    AudioClip btnClick;
+    [SerializeField]
     Sprite soundOn, soundOff;
     [SerializeField]
     Image soundImg;
@@ -42,7 +46,7 @@ public class MenuButtons : MonoBehaviour
     }
 
     public void OnButtonToggle(MenuItem item)
-    {
+    {       
         switch (item)
         {
             case MenuItem.MENU_ADVENTURE:
@@ -74,6 +78,7 @@ public class MenuButtons : MonoBehaviour
 
     public void CloseOptions()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         optionsMarker.SetSelectable(true);
         optionsScreen.SetActive(false);
     }
@@ -90,6 +95,7 @@ public class MenuButtons : MonoBehaviour
 
     public void CloseShop()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         shopMarker.SetSelectable(true);
         shopScreen.SetActive(false);
     }
@@ -107,6 +113,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BuyLife()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         GLOBALS.player.stars -= GLOBALS.LIFEPRICE;
         GLOBALS.player.lifeUpgrades += 1;
         GLOBALS.player.lifes += 1;
@@ -116,6 +123,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BuyCrono()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         GLOBALS.player.stars -= GLOBALS.CRONOPRICE;
         GLOBALS.player.cronoPower += 1;
         UpdateShop();
@@ -123,6 +131,7 @@ public class MenuButtons : MonoBehaviour
 
     public void BuyCalculator()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         GLOBALS.player.stars -= GLOBALS.CALCULATORPRICE;
         GLOBALS.player.calculatorPower += 1;
         UpdateShop();
@@ -130,6 +139,7 @@ public class MenuButtons : MonoBehaviour
 
     public void ToggleSound()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         GLOBALS.soundOn = !GLOBALS.soundOn;
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
@@ -138,11 +148,13 @@ public class MenuButtons : MonoBehaviour
 
     public void QuitGame()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         Application.Quit();
     }
 
     public void DownloadCube()
     {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
         byte[] data = null;
 
         data = cubeImg.EncodeToJPG(100);
