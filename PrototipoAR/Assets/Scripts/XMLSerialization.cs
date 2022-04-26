@@ -10,20 +10,31 @@ using System.Text;
 public static class XMLSerialization
 {
     public static bool LoadXMLData()
-    {        
+    {
         if (File.Exists(Application.persistentDataPath + "/GameData.xml"))
-        {
-            XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(Application.persistentDataPath + "/GameData.xml");
-            XmlElement doc = xmldoc["Save"];
-            if (doc == null)
+        { 
+            XmlElement doc;
+            try
             {
-                Debug.LogWarning("Save node not found");
+                Debug.LogWarning("Loading xml document...");
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(Application.persistentDataPath + "/GameData.xml");
+                doc = xmldoc["Save"];
+                if (doc == null)
+                {
+                    Debug.LogWarning("Save node not found");
+                    return false;
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.LogError(e);
                 return false;
             }
-            XmlElement node;
 
+            XmlElement node;
             ////Settings////  
+            Debug.LogWarning("Loading settings...");
             node = doc["Settings"];
             if (node != null)
             {
@@ -34,7 +45,7 @@ public static class XMLSerialization
             //////////////
 
             ////Player////
-
+            Debug.LogWarning("Loading player...");
             node = doc["Player"];
             if (node == null) Debug.LogWarning("Player node not found");          
             else
@@ -54,17 +65,18 @@ public static class XMLSerialization
             }
 
             //////////////
-            
-            ////Adventure////
 
+            ////Adventure////
+            Debug.LogWarning("Loading adventure...");
             node = doc["Adventure"];
             if (node == null) Debug.LogWarning("Adventure node not found");
             else
             {
-                XmlElement levelNode;
+                XmlNode levelNode;
                 foreach (KeyValuePair<int, NodeInfo> adNode in GLOBALS.infoNodes)
                 {
-                    levelNode = node[adNode.Key.ToString()];
+                    levelNode = node.SelectSingleNode("/Node[@value='"+adNode.Key.ToString()+"']");
+                    //levelNode = node["Node"+adNode.Key.ToString()];
                     if (levelNode != null)
                     {
                         GLOBALS.infoNodes[adNode.Key].UpdateNode(
@@ -73,27 +85,25 @@ public static class XMLSerialization
                             bool.Parse(node["StarTime"].GetAttribute("value")),
                             bool.Parse(node["StarError"].GetAttribute("value")));
                         levelNode = null;
-                    }                   
+                    }            
                 }                
             }
-
             //////////////
 
             Debug.Log("XML data loaded");
-            doc = null;
-            xmldoc = null;
             return true;
         }
         else
         {
             Debug.LogError("SAVE FILE NOT FOUND!");
-            SaveXMLData();
             return false;
         }      
     }
 
     public static void SaveXMLData()
     {
+        if(File.Exists(Application.persistentDataPath + "/GameData.xml")) File.Delete(Application.persistentDataPath + "/GameData.xml");
+
         XmlDocument xmlDocument = new XmlDocument();
 
         XmlDeclaration xmldecl = xmlDocument.CreateXmlDeclaration("1.0", null, null);
@@ -107,17 +117,18 @@ public static class XMLSerialization
         root.SetAttribute("FileName", "SaveFile");
 
         ////Settings///
+        Debug.LogWarning("Saving settings...");
         XmlElement settings = xmlDocument.CreateElement("Settings");
 
         XmlElement Sound = xmlDocument.CreateElement("Sound");
         Sound.SetAttribute("value", GLOBALS.soundOn.ToString());
         settings.AppendChild(Sound);
 
-        root.AppendChild(settings);       
+        root.AppendChild(settings);
         //////////////
-      
-        ////Player////
 
+        ////Player////
+        Debug.LogWarning("Saving player...");
         XmlElement player = xmlDocument.CreateElement("Player");
 
         XmlElement elem = xmlDocument.CreateElement("Stars");
@@ -156,15 +167,16 @@ public static class XMLSerialization
 
         root.AppendChild(player);
         //////////////
-        
-        ////Adventure////
 
+        ////Adventure////
+        Debug.LogWarning("Saving adventure...");
         XmlElement adventure = xmlDocument.CreateElement("Adventure");
         XmlElement adNode, aux;
 
         foreach (KeyValuePair<int, NodeInfo> node in GLOBALS.infoNodes)
         {
-            adNode = xmlDocument.CreateElement(node.Value.level.ToString());
+            adNode = xmlDocument.CreateElement("Node");
+            adNode.SetAttribute("value", node.Key.ToString());
 
             aux = xmlDocument.CreateElement("State");
             aux.SetAttribute("value", ((int)node.Value.state).ToString());
@@ -193,8 +205,5 @@ public static class XMLSerialization
         xmlDocument.Save(Application.persistentDataPath + "/GameData.xml");
         if (File.Exists(Application.persistentDataPath + "/GameData.xml")) Debug.Log("XML FILE SAVED");
         else Debug.Log("Error saving XML file");
-
-        doc = null;
-        xmldecl = null;
     }
 }

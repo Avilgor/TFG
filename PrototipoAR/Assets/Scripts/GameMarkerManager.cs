@@ -13,11 +13,11 @@ public class GameMarkerManager : MonoBehaviour
 
     private void Awake()
     {
-        GLOBALS.gameMarkerManager = this;
+        GLOBALS.gameMarkerManager = this;        
     }
 
-    void Start()
-    {
+    public void StartMarkers()
+    { 
         for (int i = 0; i < markers.Count; i++)
         {
             markersGo.Add(markers[i].gameObject);
@@ -189,7 +189,7 @@ public class GameMarkerManager : MonoBehaviour
 
     IEnumerator CrazyCube()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
         List<NumberMarker> openList = new List<NumberMarker>(); 
         List<int> numberList = new List<int>();
 

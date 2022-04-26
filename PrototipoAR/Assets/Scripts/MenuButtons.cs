@@ -17,9 +17,9 @@ public class MenuButtons : MonoBehaviour
     [SerializeField]
     Image soundImg;
     [SerializeField]
-    SelectableMarker optionsMarker, shopMarker,challengeMarker;
+    SelectableMarker optionsMarker, shopMarker,challengeMarker,tutorialMarker;
     [SerializeField]
-    GameObject optionsScreen, shopScreen;
+    GameObject optionsScreen, shopScreen,tutorialScreen;
     [SerializeField]
     Button btnLife, btnCrono, btnCalculator;
     [SerializeField]
@@ -35,6 +35,7 @@ public class MenuButtons : MonoBehaviour
     {
         shopScreen.SetActive(false);
         optionsScreen.SetActive(false);
+        tutorialScreen.SetActive(false);
         challengeMarker.SetSelectable(GLOBALS.player.CheckDailyChallenge());
     }
 
@@ -68,7 +69,7 @@ public class MenuButtons : MonoBehaviour
                 break;
             case MenuItem.MENU_TUTORIAL:
                 if (GLOBALS.soundOn) source.PlayOneShot(selectionFX);
-
+                OpenTutorial();
                 break;
             default:
                 Debug.Log("Menu item not identified");
@@ -110,6 +111,20 @@ public class MenuButtons : MonoBehaviour
         shopScreen.GetComponent<Animator>().SetTrigger("PopOut");
         shopMarker.SetSelectable(true);
         //shopScreen.SetActive(false);
+    }
+
+    public void OpenTutorial()
+    {
+        tutorialMarker.SetSelectable(false);
+        tutorialScreen.SetActive(true);
+        tutorialScreen.GetComponent<Animator>().SetTrigger("PopIn");
+    }
+
+    public void CloseTutorial()
+    {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
+        tutorialScreen.GetComponent<Animator>().SetTrigger("PopOut");
+        tutorialMarker.SetSelectable(true);
     }
 
     private void UpdateShop()

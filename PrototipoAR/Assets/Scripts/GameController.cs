@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        markerManager.StartMarkers();
         currentAlteration = GameAlteration.ALT_NONE;
         currentNodeDifficulty = Difficulty.DFF_EASY;
         operationIndex = 0;
@@ -103,21 +104,16 @@ public class GameController : MonoBehaviour
             if (numList.Contains(aux)) i--;
             else numList.Add(aux);
         }
-
-        for (int i = 0; i < numList.Count; i++)
-        {
-            Debug.Log("Number: "+numList[i]);
-        }
+      
         markerManager.SetMarkers(numList);
-        //Change to only adventure
-        if(GLOBALS.currentGameMode == GameMode.MODE_CHALLENGE) AlterCube();
+        if(GLOBALS.currentGameMode == GameMode.MODE_ADVENTURE) AlterCube();
     }
 
     public bool CheckNumber(int num)
     {
         if (num == operationGenerator.currentSolution)
         {
-            Debug.Log("Correct number");
+            //Debug.Log("Correct number");
             totalOperations--;
             operationIndex++;
             StartCoroutine(NextOperation());
@@ -130,7 +126,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Incorrect number");
+            //Debug.Log("Incorrect number");
             failed = true;
             if (GLOBALS.currentGameMode == GameMode.MODE_CHALLENGE) ProcessResults();
             GLOBALS.gameSoundManager.PlayNumberWrong();
@@ -141,7 +137,7 @@ public class GameController : MonoBehaviour
     private void AlterCube()
     {
         //TESTING//
-        /*int roll = Random.Range(1,101);
+        int roll = Random.Range(1,101);
 
         if (roll <= 5)
         {
@@ -150,20 +146,20 @@ public class GameController : MonoBehaviour
             text.color = goldAlterColor;          
             gameOptions.ToogleCalculatorButton(true);
             markerManager.AlterCube(currentAlteration);
-            GLOBALS.gameSoundManager.PlayVariationGold();*/
-        /*}
+            GLOBALS.gameSoundManager.PlayVariationGold();
+        }
         else if (roll <= 10)
         {
             text.color = defaultColor;
             roll = Random.Range(0, 3);
             switch (roll)
             {
-                case 0:*/
+                case 0:
                     currentAlteration = GameAlteration.ALT_CUBEHOLED;
                     markerManager.AlterCube(currentAlteration);
                     gameOptions.ToogleCalculatorButton(false);
                     GLOBALS.gameSoundManager.PlayVariationHole();
-                   /*break;
+                   break;
                 case 1:
                     currentAlteration = GameAlteration.ALT_CUBETRAP;
                     markerManager.AlterCube(currentAlteration);
@@ -182,7 +178,7 @@ public class GameController : MonoBehaviour
             currentAlteration = GameAlteration.ALT_NONE;
             gameOptions.ToogleCalculatorButton(true);
             markerManager.AlterCube(currentAlteration);
-        }*/
+        }
     }
 
     public int GetOperationResult()
@@ -258,8 +254,8 @@ public class GameController : MonoBehaviour
                     {
                         GLOBALS.infoNodes[GLOBALS.currentNode + 1].state = MissionState.MISSION_UNLOCKED;
                     }
-                    Debug.Log("Remaining time: " + timer.ToString());
-                    Debug.Log("Star time: " + GLOBALS.infoNodes[GLOBALS.currentNode].time / 2);
+                    //Debug.Log("Remaining time: " + timer.ToString());
+                    //Debug.Log("Star time: " + GLOBALS.infoNodes[GLOBALS.currentNode].time / 2);
                     GLOBALS.infoNodes[GLOBALS.currentNode].starCompleted = true;
                     if (failed)
                     {

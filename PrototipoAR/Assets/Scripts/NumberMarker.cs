@@ -28,19 +28,13 @@ public class NumberMarker : MonoBehaviour
     {
         lockBreaks = 0;
         faceClosed = false;
-        /*holeGo.SetActive(false);
-        Debug.Log("Hole off");
-        lockGo.SetActive(false);
-        Debug.Log("Lock off");*/
     }
 
     public void SetNumber(int num)
     {
         number = num;
         holeGo.SetActive(false);
-        Debug.Log("Hole off");
         lockGo.SetActive(false);
-        Debug.Log("Lock off");
         text.text = num.ToString();
         selectable.SetSelectable(true);
         text.enabled = true;
@@ -67,7 +61,6 @@ public class NumberMarker : MonoBehaviour
     public void HoledFace(Sprite sp)
     {
         holeGo.SetActive(true);
-        Debug.Log("Hole on");
         holeSprite.sprite = sp;      
         text.enabled = false;
         selectable.SetSelectable(false);
@@ -81,7 +74,6 @@ public class NumberMarker : MonoBehaviour
         lockBreaks = taps;
         lockSprite.sprite = sp;
         lockGo.SetActive(true);
-        Debug.Log("Lock on");
         text.enabled = false;
         selectable.SetSelectable(false);
         faceClosed = true;
@@ -90,9 +82,7 @@ public class NumberMarker : MonoBehaviour
     public void DisableAlterations()
     {
         holeGo.SetActive(false);
-        Debug.Log("Hole off");
         lockGo.SetActive(false);
-        Debug.Log("Lock off");
     }
 
     public void ToggleSelectable(bool value)
@@ -113,20 +103,19 @@ public class NumberMarker : MonoBehaviour
     public void LockTap()
     {
         lockBreaks--;
+        GLOBALS.gameSoundManager.PlayVariationLockHit();
         if (lockBreaks <= 0)
         {
             faceClosed = false;
             selectable.SetSelectable(true);
             text.enabled = true;
             lockGo.SetActive(false);
-            Debug.Log("Lock off");
             GLOBALS.gameSoundManager.PlayVariationLockBreak();
         }
         else if ((lockBreaks % lockSteps) == 0)
         {
             lockIndex++;
             lockSprite.sprite = GLOBALS.gameMarkerManager.GetLockSprite(lockIndex);
-            GLOBALS.gameSoundManager.PlayVariationLockHit();
         }
     }
 }

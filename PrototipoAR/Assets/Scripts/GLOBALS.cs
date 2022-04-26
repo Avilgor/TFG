@@ -39,11 +39,18 @@ public static class GLOBALS
             if (Encription.DecryptFile())
             {
                 //Load save
-                XMLSerialization.LoadXMLData();
-                player.LifeCD();
-                Encription.EncryptFile();
+                if (XMLSerialization.LoadXMLData())
+                {
+                    player.LifeCD();
+                    Encription.EncryptFile();
+                }
+                else SaveGame();
             }
-            else Debug.Log("Error loading save data: Save file not found.");
+            else
+            {
+                Debug.Log("Error loading save data: Save file not found.");
+                SaveGame();
+            }
             startUp = true;
             Debug.Log("App start-up done.");
         }

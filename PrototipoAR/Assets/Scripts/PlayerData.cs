@@ -75,7 +75,7 @@ public class PlayerData
 
     public void SetLastTime(int day, int month, int year, int hour, int min, int sec)
     {
-        lastTime = new DateTime(day,month,year,hour,min,sec);
+        lastTime = new DateTime(year,month,day,hour,min,sec);
     }
 
     public void UpdateLife(int num)

@@ -11,44 +11,38 @@
         {
             "deviceId": "19ae5649",
             "name": "com.miui.home",
-            "processId": 6300,
+            "processId": 16036,
             "exited": false
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 15038,
+            "processId": 19881,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 15283,
+            "processId": 20104,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 22646,
+            "processId": 21175,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 24078,
+            "processId": 21861,
             "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 24874,
+            "processId": 23105,
             "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.miui.android.fashiongallery",
-            "processId": 26059,
-            "exited": false
         }
     ],
     "m_Tags": {

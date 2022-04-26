@@ -10,7 +10,7 @@ public static class Encription
 {
     public static string pass = "Proto.AR";
     public static string filePath = Application.persistentDataPath + "/GameData.xml";
-    public static string encriptedPath = Application.persistentDataPath + "/GameData.sav";
+    public static string encriptedPath = Application.persistentDataPath + "/GameData.par";
     public static readonly byte[] salt = new byte[] { 0xcb, 0x91, 0x95, 0x38, 0xc0, 0xc4, 0x1c, 0xbf }; // Must be at least eight bytes
     public const int iterations = 1042;
 
