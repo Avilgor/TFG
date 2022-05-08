@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 33718667}
   - component: {fileID: 33718669}
   - component: {fileID: 33718668}
+  - component: {fileID: 33718670}
+  - component: {fileID: 33718671}
   m_Layer: 3
   m_Name: HoleImg
   m_TagString: Untagged
@@ -199,6 +201,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33718666}
   m_CullTransparentMesh: 1
+--- !u!95 &33718670
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33718666}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b8e1fdcfdbdd6c4893273427ac35761, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &33718671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33718666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &38172551
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +244,7 @@ GameObject:
   - component: {fileID: 38172552}
   - component: {fileID: 38172554}
   - component: {fileID: 38172553}
+  - component: {fileID: 38172555}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -335,6 +370,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38172551}
   m_CullTransparentMesh: 1
+--- !u!95 &38172555
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38172551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d6bc1781ed57ff42a736210ea877a14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &49095759
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 1.7000008}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 1.7000046}
   m_SizeDelta: {x: -27.3749, y: -25.1594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180067334
@@ -815,6 +870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 38172553}
+  textAnim: {fileID: 38172555}
+  holeAnim: {fileID: 912545011}
   holeSprite: {fileID: 912545009}
   lockSprite: {fileID: 1179607252}
   holeGo: {fileID: 912545007}
@@ -831,6 +888,8 @@ GameObject:
   - component: {fileID: 278471671}
   - component: {fileID: 278471670}
   - component: {fileID: 278471669}
+  - component: {fileID: 278471672}
+  - component: {fileID: 278471673}
   m_Layer: 3
   m_Name: holeImg
   m_TagString: Untagged
@@ -896,6 +955,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.47, y: 0.47}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &278471672
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278471668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4b32617e4dadcb4db2d5511e2a61b3f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &278471673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278471668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374389650
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +1061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 752136349}
+  textAnim: {fileID: 752136351}
+  holeAnim: {fileID: 545038271}
   holeSprite: {fileID: 545038269}
   lockSprite: {fileID: 1280700033}
   holeGo: {fileID: 545038267}
@@ -1107,8 +1200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 1, y: 0.50666153}
   m_AnchorMax: {x: 1, y: 0.50666153}
-  m_AnchoredPosition: {x: -76.2, y: 0.1}
-  m_SizeDelta: {x: 70.8604, y: 74.7466}
+  m_AnchoredPosition: {x: -105, y: 0}
+  m_SizeDelta: {x: 130.8102, y: 137.9842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &401683140
 GameObject:
@@ -1563,8 +1656,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 78.6607, y: -74.489}
-  m_SizeDelta: {x: 101.9499, y: 100.43}
+  m_AnchoredPosition: {x: 114.775635, y: -110.06555}
+  m_SizeDelta: {x: 174.1797, y: 171.583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503729964
 MonoBehaviour:
@@ -1695,8 +1788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1.14e-13, y: -7.5}
-  m_SizeDelta: {x: 74.821, y: 19.2436}
+  m_AnchoredPosition: {x: -1.1, y: -15.7}
+  m_SizeDelta: {x: 82.5493, y: 36.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &542573083
 CanvasRenderer:
@@ -1753,11 +1846,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 43.83
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 43.83
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1882,6 +1975,8 @@ GameObject:
   - component: {fileID: 545038268}
   - component: {fileID: 545038270}
   - component: {fileID: 545038269}
+  - component: {fileID: 545038271}
+  - component: {fileID: 545038272}
   m_Layer: 3
   m_Name: HoleImg
   m_TagString: Untagged
@@ -1947,6 +2042,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545038267}
   m_CullTransparentMesh: 1
+--- !u!95 &545038271
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545038267}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e731ad0a14e89f44b96fdeb2d92d98c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &545038272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545038267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546054455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,7 +2242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.0999985, y: 2.7999992}
+  m_AnchoredPosition: {x: -1.0999908, y: 2.7999954}
   m_SizeDelta: {x: -21.253, y: -28.695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &564969077
@@ -2419,6 +2546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1527863279}
+  textAnim: {fileID: 1527863281}
+  holeAnim: {fileID: 758626496}
   holeSprite: {fileID: 758626494}
   lockSprite: {fileID: 789406189}
   holeGo: {fileID: 758626492}
@@ -2703,6 +2832,7 @@ GameObject:
   - component: {fileID: 752136348}
   - component: {fileID: 752136350}
   - component: {fileID: 752136349}
+  - component: {fileID: 752136351}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2828,6 +2958,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752136347}
   m_CullTransparentMesh: 1
+--- !u!95 &752136351
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752136347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ff7cc75377674347836c592b2391a01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &758626492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,6 +2989,8 @@ GameObject:
   - component: {fileID: 758626493}
   - component: {fileID: 758626495}
   - component: {fileID: 758626494}
+  - component: {fileID: 758626496}
+  - component: {fileID: 758626497}
   m_Layer: 3
   m_Name: HoleImg
   m_TagString: Untagged
@@ -2904,6 +3056,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758626492}
   m_CullTransparentMesh: 1
+--- !u!95 &758626496
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758626492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b46cb9c6e83636a499fb75dc3edd18a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &758626497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758626492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &783043853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,8 +3124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149.3, y: -1.5}
-  m_SizeDelta: {x: 82.1025, y: 74.553}
+  m_AnchoredPosition: {x: -230, y: 2}
+  m_SizeDelta: {x: 154.4371, y: 140.2363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783043855
 MonoBehaviour:
@@ -3554,6 +3738,8 @@ GameObject:
   - component: {fileID: 912545008}
   - component: {fileID: 912545010}
   - component: {fileID: 912545009}
+  - component: {fileID: 912545011}
+  - component: {fileID: 912545012}
   m_Layer: 3
   m_Name: HoleImg
   m_TagString: Untagged
@@ -3619,6 +3805,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912545007}
   m_CullTransparentMesh: 1
+--- !u!95 &912545011
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912545007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb68a87f4f1f7f94a998463638e9ce10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &912545012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912545007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &915116835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,6 +3848,7 @@ GameObject:
   - component: {fileID: 915116836}
   - component: {fileID: 915116838}
   - component: {fileID: 915116837}
+  - component: {fileID: 915116839}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3755,6 +3974,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915116835}
   m_CullTransparentMesh: 1
+--- !u!95 &915116839
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915116835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 216cd97fb9535714d90f7fdf2cf292b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &933295846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4653,6 +4892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1844718366}
+  textAnim: {fileID: 1844718368}
+  holeAnim: {fileID: 278471672}
   holeSprite: {fileID: 278471669}
   lockSprite: {fileID: 219278173}
   holeGo: {fileID: 278471668}
@@ -5037,6 +5278,7 @@ GameObject:
   - component: {fileID: 1527863278}
   - component: {fileID: 1527863280}
   - component: {fileID: 1527863279}
+  - component: {fileID: 1527863281}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5162,6 +5404,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527863277}
   m_CullTransparentMesh: 1
+--- !u!95 &1527863281
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527863277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e98a2bc87a73f3d4ab2e9bc4fd7695dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1569748805
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,6 +5666,7 @@ GameObject:
   - component: {fileID: 1666336577}
   - component: {fileID: 1666336579}
   - component: {fileID: 1666336578}
+  - component: {fileID: 1666336580}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5529,6 +5792,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666336576}
   m_CullTransparentMesh: 1
+--- !u!95 &1666336580
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666336576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4781b63b5405c4a46b718f5650569eba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1757339788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5603,6 +5886,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 915116837}
+  textAnim: {fileID: 915116839}
+  holeAnim: {fileID: 33718670}
   holeSprite: {fileID: 33718668}
   lockSprite: {fileID: 546054458}
   holeGo: {fileID: 33718666}
@@ -5727,8 +6012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.2396, y: 3.7807}
-  m_SizeDelta: {x: 74.8218, y: 72.8805}
+  m_AnchoredPosition: {x: 5, y: -2}
+  m_SizeDelta: {x: 135.9402, y: 132.4132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1818226364
 MonoBehaviour:
@@ -5971,6 +6256,7 @@ GameObject:
   - component: {fileID: 1844718365}
   - component: {fileID: 1844718367}
   - component: {fileID: 1844718366}
+  - component: {fileID: 1844718368}
   m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6096,6 +6382,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844718364}
   m_CullTransparentMesh: 1
+--- !u!95 &1844718368
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844718364}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 469d3a999a3f4d54693ec74f0a89b9ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1878462239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6439,6 +6745,8 @@ GameObject:
   - component: {fileID: 2032375273}
   - component: {fileID: 2032375275}
   - component: {fileID: 2032375274}
+  - component: {fileID: 2032375276}
+  - component: {fileID: 2032375277}
   m_Layer: 3
   m_Name: HoleImg
   m_TagString: Untagged
@@ -6504,6 +6812,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032375272}
   m_CullTransparentMesh: 1
+--- !u!95 &2032375276
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032375272}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0af22ac85b924dd41b5c206307128c06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2032375277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032375272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d342814bd1e774c8d6985ddd2139b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2032542282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6623,8 +6963,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.0004, y: -10.5651}
-  m_SizeDelta: {x: 74.821, y: 19.2436}
+  m_AnchoredPosition: {x: 0, y: -21.221}
+  m_SizeDelta: {x: 98.7438, y: 42.4415}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2070889140
 CanvasRenderer:
@@ -6681,11 +7021,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 43.83
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 43.83
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -7097,8 +7437,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75.29359, y: -207.51445}
-  m_SizeDelta: {x: 416.29, y: 150.1156}
+  m_AnchoredPosition: {x: 118.89727, y: -328.433}
+  m_SizeDelta: {x: 658.1271, y: 237.323}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114373181
 MonoBehaviour:
@@ -7212,6 +7552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1666336578}
+  textAnim: {fileID: 1666336580}
+  holeAnim: {fileID: 2032375276}
   holeSprite: {fileID: 2032375274}
   lockSprite: {fileID: 722712191}
   holeGo: {fileID: 2032375272}

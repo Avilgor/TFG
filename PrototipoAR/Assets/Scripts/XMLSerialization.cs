@@ -32,8 +32,9 @@ public static class XMLSerialization
                 return false;
             }
 
-            XmlElement node;
+
             ////Settings////  
+            XmlElement node;
             Debug.LogWarning("Loading settings...");
             node = doc["Settings"];
             if (node != null)
@@ -41,7 +42,6 @@ public static class XMLSerialization
                 if (node["Sound"] != null) GLOBALS.soundOn = bool.Parse(node["Sound"].GetAttribute("value"));
             }
             else Debug.LogWarning("Settings node not found");
-
             //////////////
 
             ////Player////
@@ -55,7 +55,8 @@ public static class XMLSerialization
                 if (node["Crono"] != null) GLOBALS.player.cronoPower = int.Parse(node["Crono"].GetAttribute("value"));
                 if (node["Lifes"] != null) GLOBALS.player.lifes = int.Parse(node["Lifes"].GetAttribute("value"));
                 if (node["LifeUpgrades"] != null) GLOBALS.player.lifeUpgrades = int.Parse(node["LifeUpgrades"].GetAttribute("value"));
-                if (node["ActiveCD"] != null) GLOBALS.player.activeCd = int.Parse(node["ActiveCD"].GetAttribute("value"));
+                if (node["ShopLifes"] != null) GLOBALS.player.shopLifes = int.Parse(node["ShopLifes"].GetAttribute("value"));
+                if (node["ActiveCD"] != null) GLOBALS.player.activeCd = float.Parse(node["ActiveCD"].GetAttribute("value"));
                 if (node["Challenge"] != null) GLOBALS.player.challengeDone = bool.Parse(node["Challenge"].GetAttribute("value"));
                 if (node["LastDate"] != null)
                 {
@@ -63,7 +64,6 @@ public static class XMLSerialization
                     GLOBALS.player.SetLastTime(int.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]), int.Parse(date[3]), int.Parse(date[5]), int.Parse(date[5]));
                 }
             }
-
             //////////////
 
             ////Adventure////
@@ -76,7 +76,6 @@ public static class XMLSerialization
                 foreach (KeyValuePair<int, NodeInfo> adNode in GLOBALS.infoNodes)
                 {
                     levelNode = node.SelectSingleNode("/Node[@value='"+adNode.Key.ToString()+"']");
-                    //levelNode = node["Node"+adNode.Key.ToString()];
                     if (levelNode != null)
                     {
                         GLOBALS.infoNodes[adNode.Key].UpdateNode(
@@ -149,6 +148,10 @@ public static class XMLSerialization
 
         elem = xmlDocument.CreateElement("LifeUpgrades");
         elem.SetAttribute("value", GLOBALS.player.lifeUpgrades.ToString());
+        player.AppendChild(elem);
+
+        elem = xmlDocument.CreateElement("ShopLifes");
+        elem.SetAttribute("value", GLOBALS.player.shopLifes.ToString());
         player.AppendChild(elem);
 
         elem = xmlDocument.CreateElement("ActiveCD");

@@ -26,10 +26,12 @@ public class AdventureModeManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Player lifes: " + GLOBALS.player.lifes);
         lifeRecovery = GLOBALS.player.LifeCD();
         lifeCd = GLOBALS.player.activeCd;
         lifesTxt.text = GLOBALS.player.lifes.ToString();
         LoadNodes();
+        Debug.Log("Player lifes: " + GLOBALS.player.lifes);
     }
 
     private void OnDestroy()
@@ -40,13 +42,13 @@ public class AdventureModeManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(0);
-        if (Input.GetKeyDown(KeyCode.A))
+        /*if (Input.GetKeyDown(KeyCode.A))
         {
             GLOBALS.player.UpdateLife(-1);
             lifeRecovery = GLOBALS.player.LifeCD();
             lifeCd = GLOBALS.player.activeCd;
             lifesTxt.text = GLOBALS.player.lifes.ToString();
-        }
+        }*/
 
         if (lifeRecovery)
         {
@@ -58,7 +60,6 @@ public class AdventureModeManager : MonoBehaviour
                 lifeCd = 0;
                 GLOBALS.player.UpdateLife(1);
                 lifesTxt.text = GLOBALS.player.lifes.ToString();
-                lifeRecovery = GLOBALS.player.LifeCD();
             }
         }
     }
@@ -89,6 +90,7 @@ public class AdventureModeManager : MonoBehaviour
             else GLOBALS.replayMission = false;
 
             GLOBALS.player.UpdateLife(-1);
+            
             GLOBALS.currentGameMode = GameMode.MODE_ADVENTURE;
             GLOBALS.currentNode = level;
             SceneManager.LoadScene(2);

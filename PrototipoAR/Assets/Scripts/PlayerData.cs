@@ -6,7 +6,7 @@ using System;
 public class PlayerData
 {
     public int stars, calculatorPower, cronoPower;
-    public int MaxLifes, lifes, lifeUpgrades;
+    public int MaxLifes, lifes, lifeUpgrades,shopLifes;
     public bool challengeDone;
     DateTime lastTime;
     public float activeCd;
@@ -16,8 +16,9 @@ public class PlayerData
         challengeDone = false;
         activeCd = 0;
         lifeUpgrades = 0;
+        shopLifes = 0;
         lifes = 2;
-        MaxLifes = 5 + lifeUpgrades;
+        MaxLifes = 5 + lifeUpgrades + shopLifes;
         stars = 0;
         calculatorPower = 0;
         cronoPower = 0;
@@ -55,7 +56,9 @@ public class PlayerData
         {
             activeCd += (float)(DateTime.Now - lastTime).TotalSeconds;
             int lifeRecovered = (int)Math.Truncate(activeCd / GLOBALS.LIFERECOVERYTIME);
-            UpdateLife(lifeRecovered);
+            lifes += lifeRecovered;
+            if (lifes < 0) lifes = 0;
+            else if (lifes > MaxLifes) lifes = MaxLifes;
             activeCd -= lifeRecovered * GLOBALS.LIFERECOVERYTIME;
             lastTime = DateTime.Now;
             if (lifes < MaxLifes) return true;
@@ -83,6 +86,6 @@ public class PlayerData
         lifes += num;
         if (lifes < 0) lifes = 0;
         else if (lifes > MaxLifes) lifes = MaxLifes;
-        lastTime = DateTime.Now;
+        LifeCD();
     }
 }

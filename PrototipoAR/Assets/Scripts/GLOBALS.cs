@@ -10,7 +10,7 @@ public enum GameMode
 
 public static class GLOBALS 
 {
-    public const int LIFERECOVERYTIME = 5;
+    public const int LIFERECOVERYTIME = 600;
     public const int LIFEPRICE = 40;
     public const int CRONOPRICE = 5; 
     public const int CALCULATORPRICE = 10;
@@ -91,11 +91,11 @@ public static class GLOBALS
     {
         if (!dataLoaded)
         {
-            infoNodes.Add(1, new NodeInfo(1, MissionState.MISSION_COMPLETED, true, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+            infoNodes.Add(1, new NodeInfo(1, MissionState.MISSION_UNLOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
                     new NodeOperations(new List<OperatorType>() {
                         OperatorType.OP_SUM})
             }));
-            infoNodes.Add(2, new NodeInfo(2, MissionState.MISSION_UNLOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
+            infoNodes.Add(2, new NodeInfo(2, MissionState.MISSION_LOCKED, false, false, false, Difficulty.DFF_EASY, new List<NodeOperations>() {
                     new NodeOperations(new List<OperatorType>() {
                         OperatorType.OP_SUM}),
                     new NodeOperations(new List<OperatorType>() {

@@ -126,9 +126,9 @@ public class OperationGenerator
                 switch (type)
                 {
                     case OperatorType.OP_SUM:
-                        return Random.Range(1, 10);
+                        return Random.Range(1, 11);
                     case OperatorType.OP_SUB:
-                        return Random.Range(1, 10);
+                        return Random.Range(1, 11);
                     case OperatorType.OP_MUL:
                         return Random.Range(1, 3);
                     case OperatorType.OP_DIV:

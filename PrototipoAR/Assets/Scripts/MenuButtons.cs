@@ -129,7 +129,7 @@ public class MenuButtons : MonoBehaviour
 
     private void UpdateShop()
     {
-        if (GLOBALS.player.stars >= GLOBALS.LIFEPRICE) btnLife.interactable = true;
+        if (GLOBALS.player.shopLifes < 2 && GLOBALS.player.stars >= GLOBALS.LIFEPRICE) btnLife.interactable = true;
         else btnLife.interactable = false;
         if (GLOBALS.player.stars >= GLOBALS.CRONOPRICE) btnCrono.interactable = true;
         else btnCrono.interactable = false;

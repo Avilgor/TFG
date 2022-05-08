@@ -136,12 +136,10 @@ public class GameController : MonoBehaviour
 
     private void AlterCube()
     {
-        //TESTING//
         int roll = Random.Range(1,101);
 
         if (roll <= 5)
         {
-            //Works
             currentAlteration = GameAlteration.ALT_GOLD;
             text.color = goldAlterColor;          
             gameOptions.ToogleCalculatorButton(true);
@@ -336,7 +334,8 @@ public class GameController : MonoBehaviour
     IEnumerator NextOperation()
     {
         float duration = 1.0f;
-        StartCoroutine(OperationChangeFX(duration));
+        if (totalOperations > 0) StartCoroutine(OperationChangeFX(duration));
+        else text.text = "";
         yield return new WaitForSeconds(duration);
         if (totalOperations <= 0) ProcessResults();
         else
