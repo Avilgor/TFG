@@ -31,6 +31,7 @@ public class OperationGenerator
 
     public void Generate(List<OperatorType> list, Difficulty diff)
     {
+        Random.InitState(System.Environment.TickCount);
         string txt = "";
         List<int> numbers = new List<int>();
         int aux;

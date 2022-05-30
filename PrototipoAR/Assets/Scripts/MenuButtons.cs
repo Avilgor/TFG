@@ -13,9 +13,9 @@ public class MenuButtons : MonoBehaviour
     [SerializeField]
     AudioClip btnClick,selectionFX;
     [SerializeField]
-    Sprite soundOn, soundOff;
+    Sprite soundOn, soundOff,selectionBtn,selectionFill;
     [SerializeField]
-    Image soundImg;
+    Image soundImg,selectionImg;
     [SerializeField]
     SelectableMarker optionsMarker, shopMarker,challengeMarker,tutorialMarker;
     [SerializeField]
@@ -83,6 +83,8 @@ public class MenuButtons : MonoBehaviour
         optionsScreen.SetActive(true);
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
+        if (GLOBALS.selectionFill) selectionImg.sprite = selectionFill;
+        else selectionImg.sprite = selectionBtn;
         optionsScreen.GetComponent<Animator>().SetTrigger("PopIn");
     }
 
@@ -170,6 +172,15 @@ public class MenuButtons : MonoBehaviour
         GLOBALS.soundOn = !GLOBALS.soundOn;
         if (GLOBALS.soundOn) soundImg.sprite = soundOn;
         else soundImg.sprite = soundOff;
+        GLOBALS.SaveGame();
+    }
+
+    public void ToggleSelection()
+    {
+        if (GLOBALS.soundOn) source.PlayOneShot(btnClick);
+        GLOBALS.selectionFill = !GLOBALS.selectionFill;
+        if (GLOBALS.selectionFill) selectionImg.sprite = selectionFill;
+        else selectionImg.sprite = selectionBtn;
         GLOBALS.SaveGame();
     }
 

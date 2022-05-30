@@ -20,28 +20,44 @@ public class MenuCameraRayCast : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(screenCenter);
-        if (Physics.Raycast(ray, out hit, layerMask))
+        if (GLOBALS.selectionFill)
         {
-            GameObject go = hit.collider.gameObject;
-
-            if (lastHit == null)
+            RaycastHit hit;
+            Ray ray = camera.ScreenPointToRay(screenCenter);
+            if (Physics.Raycast(ray, out hit, layerMask))
             {
-                markerManager.HitMarker(go);
-                lastHit = go;
+                GameObject go = hit.collider.gameObject;
+
+                if (lastHit == null)
+                {
+                    markerManager.HitMarker(go);
+                    lastHit = go;
+                }
+                else if (lastHit != go)
+                {
+                    markerManager.StopHitMarker(lastHit);
+                    markerManager.HitMarker(go);
+                    lastHit = go;
+                }
             }
-            else if (lastHit != go)
+            else if (lastHit != null)
             {
                 markerManager.StopHitMarker(lastHit);
-                markerManager.HitMarker(go);
-                lastHit = go;
+                lastHit = null;
             }
         }
-        else if (lastHit != null)
+        else if (Input.touchCount > 0)
         {
-            markerManager.StopHitMarker(lastHit);
-            lastHit = null;
+            Touch currentTouch = Input.GetTouch(0);
+            if (currentTouch.phase == TouchPhase.Began)
+            {
+                RaycastHit hit;
+                Ray ray = camera.ScreenPointToRay(currentTouch.position);
+                if (Physics.Raycast(ray, out hit, layerMask))
+                {
+                    GLOBALS.menuMarkerManager.HitMarker(hit.collider.gameObject);
+                }
+            }
         }
     }
 }

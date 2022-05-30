@@ -43,7 +43,7 @@ public class NumberMarker : MonoBehaviour
         lockGo.SetActive(false);
         text.text = num.ToString();
         selectable.SetSelectable(true);
-        //text.enabled = true;
+        text.enabled = true;
         textAnim.SetTrigger("PopIn");
         faceClosed = false;
     }
@@ -56,8 +56,21 @@ public class NumberMarker : MonoBehaviour
         selectable.SetSelectable(false);
     }
 
+    /*public void SetButtonSelection()
+    {
+        selectionButton.enabled = true;
+        fillSelection.enabled = false;
+    }
+
+    public void SetSelectionFill()
+    {
+        selectionButton.enabled = false; 
+        fillSelection.enabled = true;
+    }*/
+
     public void OnExecute()
     {
+        Debug.Log("Called execute");
         if (!GLOBALS.gameController.CheckNumber(number))
         {
             selectable.SetSelectable(false);
@@ -71,7 +84,7 @@ public class NumberMarker : MonoBehaviour
     {
         holeGo.SetActive(true);
         holeSprite.sprite = sp;      
-        //text.enabled = false;
+        text.enabled = false;
         textAnim.SetTrigger("PopOut");
         holeAnim.SetTrigger("PopIn");
         selectable.SetSelectable(false);
@@ -86,7 +99,7 @@ public class NumberMarker : MonoBehaviour
         lockSprite.sprite = sp;
         lockGo.SetActive(true);
         textAnim.SetTrigger("PopOut");
-        //text.enabled = false;
+        text.enabled = false;
         selectable.SetSelectable(false);
         faceClosed = true;
     }
@@ -96,6 +109,7 @@ public class NumberMarker : MonoBehaviour
         //holeGo.SetActive(false);
         holeAnim.SetTrigger("PopOut");
         lockGo.SetActive(false);
+        text.enabled = true;
     }
 
     public void ToggleSelectable(bool value)
@@ -105,7 +119,7 @@ public class NumberMarker : MonoBehaviour
 
     public void ToggleText(bool value)
     {
-        //text.enabled = value;
+        text.enabled = value;
         if(value) textAnim.SetTrigger("PopIn");
         else textAnim.SetTrigger("PopOut");
     }
@@ -123,7 +137,7 @@ public class NumberMarker : MonoBehaviour
         {
             faceClosed = false;
             selectable.SetSelectable(true);
-            //text.enabled = true;
+            text.enabled = true;
             textAnim.SetTrigger("PopIn");
             lockGo.SetActive(false);
             GLOBALS.gameSoundManager.PlayVariationLockBreak();

@@ -8,9 +8,17 @@ public class MenuMarkerManager : MonoBehaviour
 
     List<GameObject> markersGo = new List<GameObject>();
 
+    private void Awake()
+    {
+        GLOBALS.menuMarkerManager = this;
+    }
+
     void Start()
     {
-        for (int i = 0; i < markers.Count; i++) markersGo.Add(markers[i].gameObject);
+        for (int i = 0; i < markers.Count; i++)
+        {
+            markersGo.Add(markers[i].gameObject);
+        }     
     }
 
     public void HitMarker(GameObject go)

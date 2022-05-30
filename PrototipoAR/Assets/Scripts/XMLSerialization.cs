@@ -40,6 +40,7 @@ public static class XMLSerialization
             if (node != null)
             {
                 if (node["Sound"] != null) GLOBALS.soundOn = bool.Parse(node["Sound"].GetAttribute("value"));
+                if (node["Fill"] != null) GLOBALS.selectionFill = bool.Parse(node["Fill"].GetAttribute("value"));
             }
             else Debug.LogWarning("Settings node not found");
             //////////////
@@ -122,6 +123,10 @@ public static class XMLSerialization
         XmlElement Sound = xmlDocument.CreateElement("Sound");
         Sound.SetAttribute("value", GLOBALS.soundOn.ToString());
         settings.AppendChild(Sound);
+
+        XmlElement fill = xmlDocument.CreateElement("Fill");
+        fill.SetAttribute("value", GLOBALS.selectionFill.ToString());
+        settings.AppendChild(fill);
 
         root.AppendChild(settings);
         //////////////

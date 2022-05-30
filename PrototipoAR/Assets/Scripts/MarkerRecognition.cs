@@ -21,8 +21,7 @@ public class MarkerRecognition : MonoBehaviour
         ARGameobjects.Add("Mark_Cube_3", trackableGos[2]);
         ARGameobjects.Add("Mark_Cube_4", trackableGos[3]);
         ARGameobjects.Add("Mark_Cube_5", trackableGos[4]);
-        ARGameobjects.Add("Mark_Cube_6", trackableGos[5]);
-        
+        ARGameobjects.Add("Mark_Cube_6", trackableGos[5]);       
     }
 
     void Start()

@@ -843,7 +843,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &258863597
 MonoBehaviour:
@@ -1034,7 +1034,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &374389654
 MonoBehaviour:
@@ -2519,7 +2519,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &641535520
 MonoBehaviour:
@@ -4865,7 +4865,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1234199675
 MonoBehaviour:
@@ -5859,7 +5859,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1757339792
 MonoBehaviour:
@@ -7108,7 +7108,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 20
   field of view: 60
   orthographic: 0
@@ -7525,7 +7525,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.01, z: 0.1}
+  m_Size: {x: 0.13, y: 0.01, z: 0.13}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2141329271
 MonoBehaviour:

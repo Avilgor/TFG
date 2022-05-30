@@ -41,9 +41,13 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
     public void OnHit()
     {
         if (isSelectable)
-        {          
-            isHit = true;
-            GLOBALS.selectionFillUI.StartFill(gameObject);
+        {
+            if (GLOBALS.selectionFill)
+            {
+                isHit = true;
+                GLOBALS.selectionFillUI.StartFill(gameObject);
+            }
+            else gameObject.SendMessage("OnExecute");
         }
     }
 
@@ -58,7 +62,7 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
 
     public void OnSelectionFill()
     {
-        Debug.Log("Selection filled");
+        //Debug.Log("Selection filled");
         gameObject.SendMessage("OnExecute");
     }
 

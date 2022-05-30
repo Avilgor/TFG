@@ -3,57 +3,51 @@
     "m_SelectedPackage": {
         "deviceId": "19ae5649",
         "name": "com.DefaultCompany.PrototipoAR",
-        "processId": 9571,
+        "processId": 15942,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 14176,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 15234,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 6176,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 7122,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 7751,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
             "name": "com.miui.home",
-            "processId": 24244,
+            "processId": 30524,
             "exited": false
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 8673,
-            "exited": false
+            "processId": 7794,
+            "exited": true
         },
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 9571,
+            "processId": 9689,
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 13441,
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 14572,
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 15243,
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 15942,
             "exited": false
         }
     ],

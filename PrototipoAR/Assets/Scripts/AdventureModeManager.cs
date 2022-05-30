@@ -26,12 +26,10 @@ public class AdventureModeManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Player lifes: " + GLOBALS.player.lifes);
         lifeRecovery = GLOBALS.player.LifeCD();
         lifeCd = GLOBALS.player.activeCd;
         lifesTxt.text = GLOBALS.player.lifes.ToString();
         LoadNodes();
-        Debug.Log("Player lifes: " + GLOBALS.player.lifes);
     }
 
     private void OnDestroy()
@@ -53,10 +51,8 @@ public class AdventureModeManager : MonoBehaviour
         if (lifeRecovery)
         {
             lifeCd += Time.deltaTime;
-            Debug.Log(lifeCd.ToString());
             if (lifeCd >= GLOBALS.LIFERECOVERYTIME)
             {
-                Debug.Log("Life CD finished");
                 lifeCd = 0;
                 GLOBALS.player.UpdateLife(1);
                 lifesTxt.text = GLOBALS.player.lifes.ToString();

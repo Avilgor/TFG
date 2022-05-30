@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public enum MenuItem
 {
     MENU_OPTIONS = 0,
@@ -17,6 +17,7 @@ public class MenuMarker : MonoBehaviour
 
     [SerializeField]
     MenuButtons buttons;
+
 
     private void Start()
     {

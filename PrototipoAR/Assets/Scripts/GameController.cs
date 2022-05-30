@@ -136,9 +136,39 @@ public class GameController : MonoBehaviour
 
     private void AlterCube()
     {
-        int roll = Random.Range(1,101);
-
-        if (roll <= 5)
+        int roll = Random.Range(1, 101);
+        //Testing
+        if (GLOBALS.currentNode == 2)
+        {
+            text.color = defaultColor;
+            currentAlteration = GameAlteration.ALT_CUBETRAP;
+            markerManager.AlterCube(currentAlteration);
+            gameOptions.ToogleCalculatorButton(true);
+        }
+        else if (GLOBALS.currentNode == 3)
+        {
+            text.color = defaultColor;
+            currentAlteration = GameAlteration.ALT_CUBEHOLED;
+            markerManager.AlterCube(currentAlteration);
+            gameOptions.ToogleCalculatorButton(false);
+            GLOBALS.gameSoundManager.PlayVariationHole();
+        }
+        else if (GLOBALS.currentNode == 4)
+        {
+            currentAlteration = GameAlteration.ALT_GOLD;
+            text.color = goldAlterColor;
+            gameOptions.ToogleCalculatorButton(true);
+            markerManager.AlterCube(currentAlteration);
+            GLOBALS.gameSoundManager.PlayVariationGold();
+        }
+        else if (GLOBALS.currentNode == 5)
+        {
+            text.color = defaultColor;
+            currentAlteration = GameAlteration.ALT_CUBECRAZY;
+            markerManager.AlterCube(currentAlteration);
+            gameOptions.ToogleCalculatorButton(true);
+        } //Testing
+        else if (roll <= 5)
         {
             currentAlteration = GameAlteration.ALT_GOLD;
             text.color = goldAlterColor;          

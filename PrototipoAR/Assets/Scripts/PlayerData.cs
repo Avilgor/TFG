@@ -17,8 +17,8 @@ public class PlayerData
         activeCd = 0;
         lifeUpgrades = 0;
         shopLifes = 0;
-        lifes = 2;
         MaxLifes = 5 + lifeUpgrades + shopLifes;
+        lifes = MaxLifes;
         stars = 0;
         calculatorPower = 0;
         cronoPower = 0;
