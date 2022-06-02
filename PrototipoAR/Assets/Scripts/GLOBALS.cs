@@ -20,6 +20,7 @@ public static class GLOBALS
     public static MenuMarkerManager menuMarkerManager = null;
     public static PlayerData player = null;
     public static GameSoundManager gameSoundManager = null;
+    public static MarkerRecognition markerRecognition = null;
 
     public static bool selectionFill = true;
     public static bool soundOn;

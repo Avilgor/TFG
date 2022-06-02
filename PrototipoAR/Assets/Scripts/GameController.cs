@@ -223,7 +223,7 @@ public class GameController : MonoBehaviour
     {
         panel.gameObject.SetActive(true);
         panel.SetUpEndPanel(GLOBALS.currentNode, stars);
-        LevelRewards.OnLevelEnd(GLOBALS.currentNode);
+        if(stars > 0) LevelRewards.OnLevelEnd(GLOBALS.currentNode);
     }
 
     private void ShowResultsChallenge(bool s1,bool s2,bool s3)

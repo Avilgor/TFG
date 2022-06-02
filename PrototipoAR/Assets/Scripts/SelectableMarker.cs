@@ -20,21 +20,23 @@ public class SelectableMarker : MonoBehaviour,ARTrackable,RaycastObject
     public void OnEnable()
     {
         isDetected = true;
+        GLOBALS.markerRecognition.UpdateTracked(1);
     }
 
     public void OnDisable()
     {
         isDetected = false;
+        GLOBALS.markerRecognition.UpdateTracked(-1);
     }
 
     public void InSight()
-    {
-        isDetected = true;
+    {     
+        if (!isDetected) isDetected = true;        
     }
 
     public void OutSight()
     {
-        isDetected = false;
+        if (isDetected) isDetected = false;      
         if (gameObject.activeSelf) gameObject.SetActive(false);
     }
 

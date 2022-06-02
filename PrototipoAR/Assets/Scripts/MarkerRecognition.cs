@@ -8,13 +8,20 @@ public class MarkerRecognition : MonoBehaviour
 {
     [SerializeField]
     GameObject[] trackableGos;
+    [SerializeField]
+    GameObject cubeGuide;
 
     [SerializeField]
     private ARTrackedImageManager imageManager;
     Dictionary<string, GameObject> ARGameobjects = new Dictionary<string, GameObject>();
 
+    int trackedImages;
+
     private void Awake()
     {
+        GLOBALS.markerRecognition = this;
+        cubeGuide.SetActive(true);
+        trackedImages = 0;
         //Each of the trackable objects added with the corresponding key
         ARGameobjects.Add("Mark_Cube_1", trackableGos[0]);
         ARGameobjects.Add("Mark_Cube_2", trackableGos[1]);
@@ -27,12 +34,6 @@ public class MarkerRecognition : MonoBehaviour
     void Start()
     {
         for (int i = 0; i < trackableGos.Length; i++) trackableGos[i].SetActive(false);
-    }
-
-
-    void Update()
-    {
-        
     }
 
     public void OnEnable() => imageManager.trackedImagesChanged += OnImageChanged;    
@@ -61,8 +62,7 @@ public class MarkerRecognition : MonoBehaviour
     }
 
     private void UpdateImage(ARTrackedImage image)
-    {
-       
+    {     
         string name = image.referenceImage.name;
         if (ARGameobjects.ContainsKey(name))
         {
@@ -90,12 +90,20 @@ public class MarkerRecognition : MonoBehaviour
                 //Debug.Log("State: None");
                 trackGo.SendMessage("OutSight");
             }
-        }
+        }      
     }
 
     private void RemoveImage(ARTrackedImage image)
     {
         
-        
+    }
+
+    public void UpdateTracked(int val)
+    {
+        trackedImages += val;
+        if (trackedImages < 0) trackedImages = 0;
+        if (trackedImages > 0) cubeGuide.SetActive(false);
+        else cubeGuide.SetActive(true);
+        //Debug.Log("Tracked images: "+trackedImages);
     }
 }
