@@ -11,18 +11,6 @@
         {
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
-            "processId": 8212,
-            "exited": true
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.miui.home",
-            "processId": 12230,
-            "exited": false
-        },
-        {
-            "deviceId": "19ae5649",
-            "name": "com.DefaultCompany.PrototipoAR",
             "processId": 8864,
             "exited": true
         },
@@ -42,6 +30,12 @@
             "deviceId": "19ae5649",
             "name": "com.DefaultCompany.PrototipoAR",
             "processId": 10787,
+            "exited": true
+        },
+        {
+            "deviceId": "19ae5649",
+            "name": "com.DefaultCompany.PrototipoAR",
+            "processId": 2466,
             "exited": true
         }
     ],

@@ -38,7 +38,7 @@ public class OperationGenerator
         switch (diff)
         {
             case Difficulty.DFF_EASY:
-                Debug.Log("Difficulty easy");
+                //Debug.Log("Difficulty easy");
                 for (int i = 0;i < list.Count;i++)
                 {
                     aux = GetNumber(list[i], Difficulty.DFF_EASY);
@@ -52,7 +52,7 @@ public class OperationGenerator
                 break;
 
             case Difficulty.DFF_EASY2:
-                Debug.Log("Difficulty easy2");
+                //Debug.Log("Difficulty easy2");
                 for (int i = 0; i < list.Count; i++)
                 {
                     aux = GetNumber(list[i], Difficulty.DFF_EASY2);
@@ -66,7 +66,7 @@ public class OperationGenerator
                 break;
 
             case Difficulty.DFF_MED:
-                Debug.Log("Difficulty medium");
+                //Debug.Log("Difficulty medium");
                 for (int i = 0; i < list.Count; i++)
                 {
                     aux = GetNumber(list[i], Difficulty.DFF_MED);
@@ -80,7 +80,7 @@ public class OperationGenerator
                 break;
 
             case Difficulty.DFF_HARD:
-                Debug.Log("Difficulty hard");
+                //Debug.Log("Difficulty hard");
                 for (int i = 0; i < list.Count; i++)
                 {
                     aux = GetNumber(list[i], Difficulty.DFF_HARD);

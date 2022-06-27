@@ -85,7 +85,7 @@ public class NodeInfo
                 time *= 2.0f;
                 break;
             case Difficulty.DFF_HARD:
-                time *= 1.5f;
+                time *= 2.0f;
                 break;
         }
     }

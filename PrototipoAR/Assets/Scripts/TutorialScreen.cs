@@ -25,7 +25,7 @@ public class TutorialScreen : MonoBehaviour
     public void OpenImage(Image img)
     {
         tutoImg.sprite = img.sprite;
-        tutoImg.gameObject.SetActive(true);
+        if(!tutoImg.IsActive()) tutoImg.gameObject.SetActive(true);
         anim.SetTrigger("PopIn");
     }
 

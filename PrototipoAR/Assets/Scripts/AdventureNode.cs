@@ -74,7 +74,11 @@ public class AdventureNode : MonoBehaviour
 
     public void OpenMission()
     {
-        panel.gameObject.SetActive(true);
-        panel.SetUpMissionPanel(missionIndex, star1, star2, star3, state);
+        if (GLOBALS.player.lifes > 0)
+        {
+            panel.gameObject.SetActive(true);
+            panel.SetUpMissionPanel(missionIndex, star1, star2, star3, state);
+        }
+        else GLOBALS.ShowAndroidToast("Not enough lifes");
     }
 }

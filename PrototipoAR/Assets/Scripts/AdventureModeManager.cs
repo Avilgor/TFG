@@ -40,13 +40,6 @@ public class AdventureModeManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(0);
-        /*if (Input.GetKeyDown(KeyCode.A))
-        {
-            GLOBALS.player.UpdateLife(-1);
-            lifeRecovery = GLOBALS.player.LifeCD();
-            lifeCd = GLOBALS.player.activeCd;
-            lifesTxt.text = GLOBALS.player.lifes.ToString();
-        }*/
 
         if (lifeRecovery)
         {

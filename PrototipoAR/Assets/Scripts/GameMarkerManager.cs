@@ -11,8 +11,11 @@ public class GameMarkerManager : MonoBehaviour
 
     List<GameObject> markersGo = new List<GameObject>();
 
+    bool crazyCoroutine;
+
     private void Awake()
     {
+        crazyCoroutine = false;
         GLOBALS.gameMarkerManager = this;        
     }
 
@@ -85,6 +88,11 @@ public class GameMarkerManager : MonoBehaviour
             case GameAlteration.ALT_CUBEHOLED:
                 int total = 0;
                 int sol = GLOBALS.gameController.GetOperationResult();
+                if (crazyCoroutine)
+                {
+                    StopCoroutine(CrazyCube());
+                    crazyCoroutine = false;
+                }
                 do
                 {
                     aux = Random.Range(0, markers.Count);
@@ -97,11 +105,17 @@ public class GameMarkerManager : MonoBehaviour
                 break;
 
             case GameAlteration.ALT_CUBECRAZY:
-                StartCoroutine(CrazyCube());
+                if(!crazyCoroutine) StartCoroutine(CrazyCube());
                 break;
 
             case GameAlteration.ALT_CUBETRAP:
                 List<NumberMarker> toSet = new List<NumberMarker>(markers);
+                if (crazyCoroutine)
+                {
+                    StopCoroutine(CrazyCube());
+                    crazyCoroutine = false;
+                }
+
                 switch (GLOBALS.gameController.GetNodeDifficulty())
                 {
                     case Difficulty.DFF_EASY:
@@ -141,6 +155,12 @@ public class GameMarkerManager : MonoBehaviour
 
             case GameAlteration.ALT_GOLD:
             case GameAlteration.ALT_NONE:
+                if (crazyCoroutine)
+                {
+                    StopCoroutine(CrazyCube());
+                    crazyCoroutine = false;
+                }
+
                 for (int i = 0; i < markers.Count; i++)
                 {
                     markers[i].DisableAlterations();
@@ -189,7 +209,8 @@ public class GameMarkerManager : MonoBehaviour
 
     IEnumerator CrazyCube()
     {
-        yield return new WaitForSeconds(7);
+        crazyCoroutine = true;
+        yield return new WaitForSeconds(10);
         List<NumberMarker> openList = new List<NumberMarker>(); 
         List<int> numberList = new List<int>();
 
@@ -213,6 +234,7 @@ public class GameMarkerManager : MonoBehaviour
             }
         }
         GLOBALS.gameSoundManager.PlayVariationCrazy();
+        crazyCoroutine = false;
         if (GLOBALS.gameController.currentAlteration == GameAlteration.ALT_CUBECRAZY) StartCoroutine(CrazyCube());
     }
 }
